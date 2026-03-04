@@ -1,6 +1,6 @@
 ---
-  layout: default.md
-  title: "About Us"
+layout: default.md
+title: "About Us"
 ---
 
 # About Us
@@ -11,6 +11,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Khor Kah Seng
+
+<img src="images/kah-seng.png" width="200px">
+
+[[github](https://github.com/kah-seng)]
+
+* Role: Team Lead
+* Responsibilities: Deliverables and Deadlines, Scheduling and Tracking
+
 ### San Wei Rong, Jarren
 
 <img src="images/jarrensan.png" width="200px">
@@ -20,20 +29,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Code Quality, Testing
 
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
 ### Johnny Doe
 
 <img src="images/johndoe.png" width="200px">
 
+[[github](http://github.com/johndoe)]
 [[github](http://github.com/johndoe)] 
 [[portfolio](team/johndoe.md)]
 
