@@ -1,7 +1,7 @@
 ---
   layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+    title: "Developer Guide"
+    pageNav: 3
 ---
 
 # AB-3 Developer Guide
@@ -241,13 +241,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -300,65 +300,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `CareContacts` and the **Actor** is the `Student Care Supervisor`, unless specified otherwise)
+(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: UC1 - Add a student**
+**Use case: Delete a person**
 
 **MSS**
 
-1.  Student Care Supervisor enters the add command with required and possibly optional parameters.
-2.  CareContacts adds the student to the address book.
-3.  CareContacts displays a success message confirming the student was added.
-
+1.  User requests to list persons
+2.  AddressBook shows a list of persons
+3.  User requests to delete a specific person in the list
+4.  AddressBook deletes the person
 
     Use case ends.
 
 **Extensions**
 
-* 2a. CareContacts detects invalid command format.
+* 2a. The list is empty.
 
-    * 2a1. CareContacts displays an error message.
-    * 2a2. Student Care Supervisor enters the add command with required and possibly optional parameters.
-    * Steps 2a1-2a2 are repeated until the command is correct 
-      
+  Use case ends.
 
-      Use case ends.
+* 3a. The given index is invalid.
 
-* 2b. CareContacts detects a duplicate student name.
+    * 3a1. AddressBook shows an error message.
 
-    * 2b1. CareContacts displays an error message.
-
-
-      Use case ends.
-
-**Use case: UC2 - Delete a student**
-
-**MSS**
-
-1.  Student Care Supervisor enters the delete command for an index number.
-2.  CareContacts deletes the student with the corresponding index number.
-3.  CareContacts display deletion success message.
-
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. CareContacts detects invalid command format.
-
-    * 2a1. CareContacts displays an error message.
-    * 2a2. Student Care Supervisor enters the add command with required and possibly optional parameters.
-    * Steps 2a1-2a2 are repeated until the command is correct
-
-
-      Use case ends.
-
-* 2b. CareContacts detects a duplicate student name.
-
-    * 2b1. CareContacts displays an error message.
-
-
-      Use case ends.
+      Use case resumes at step 2.
 
 *{More to be added}*
 
@@ -392,15 +357,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -409,16 +374,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -426,6 +391,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
