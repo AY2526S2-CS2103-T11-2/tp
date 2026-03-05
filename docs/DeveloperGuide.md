@@ -272,7 +272,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+**Target user profile**: Student care supervisor
 
 * has a need to manage a significant number of contacts
 * can type fast
