@@ -361,13 +361,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. The given student index does not exist.
-
-    * 1b1. CareContacts displays an error message.
-
-      Use case ends.
-
-
 **Use case: UC3 - List all student information**
 
 **MSS**
