@@ -3,9 +3,6 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -37,10 +34,9 @@ public class PersonUtil {
         sb.append(PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
-        person.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " "));
-        sb.append(PREFIX_PARENT_NAME + person.getParentName().fullName + " ");
-        sb.append(PREFIX_PARENT_PHONE + person.getParentPhone().value + " ");
-        sb.append(PREFIX_PARENT_EMAIL + person.getParentEmail().value + " ");
+        person.getTags().stream().forEach(
+            s -> sb.append(PREFIX_TAG + s.tagName + " ")
+        );
         return sb.toString();
     }
 
@@ -61,12 +57,6 @@ public class PersonUtil {
                 tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
-        descriptor.getParentName()
-                .ifPresent(parentName -> sb.append(PREFIX_PARENT_NAME).append(parentName.fullName).append(" "));
-        descriptor.getParentPhone()
-                .ifPresent(parentPhone -> sb.append(PREFIX_PARENT_PHONE).append(parentPhone.value).append(" "));
-        descriptor.getParentEmail()
-                .ifPresent(parentEmail -> sb.append(PREFIX_PARENT_EMAIL).append(parentEmail.value).append(" "));
         return sb.toString();
     }
 }
