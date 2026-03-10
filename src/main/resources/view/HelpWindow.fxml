@@ -30,11 +30,8 @@
                 <padding>
                   <Insets top="10" right="15" bottom="10" left="15"/>
                 </padding>
-<<<<<<< HEAD
                 <Label text="Getting Started" styleClass="help-title"/>
-=======
-                <Label text="Available Commands" styleClass="help-title"/>
->>>>>>> 26f3129c035586942748d3dcc1ef1f38604ce4d1
+
 
                 <Separator/>
 
@@ -42,12 +39,7 @@
                 <Label text="Command:" styleClass="help-subtitle"/>
                 <Label text="add n/STUDENT-NAME pn/PARENT-NAME pc/PARENT-PHONE pe/PARENT-EMAIL a/ADDRESS" styleClass="help-command" wrapText="True"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
-<<<<<<< HEAD
-                <VBox styleClass="example-box">
-                  <Label text="add n/James"/>
-                  <Label text="add n/James Lim a/5"/>
-                  <Label text="add n/James pc/91234567 pe/paul@gmail.com"/>
-=======
+
                 <VBox spacing="2" styleClass="example-box">
                   <padding>
                     <Insets top="10" right="15" bottom="10" left="15"/>
@@ -55,23 +47,18 @@
                   <Label text="add n/James" styleClass="help-example"/>
                   <Label text="add n/James Lim a/5" styleClass="help-example"/>
                   <Label text="add n/James pc/91234567 pe/paul@gmail.com" styleClass="help-example"/>
->>>>>>> 26f3129c035586942748d3dcc1ef1f38604ce4d1
                 </VBox>
 
                 <Separator/>
 
                 <Label text="Delete Student" styleClass="help-section"/>
                 <Label text="Command:" styleClass="help-subtitle"/>
-                <Label text="delete [INDEX]" styleClass="help-command"/>
+                <Label text="delete INDEX" styleClass="help-command"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
-<<<<<<< HEAD
-                <VBox styleClass="example-box">
-=======
                 <VBox spacing="2" styleClass="example-box">
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
->>>>>>> 26f3129c035586942748d3dcc1ef1f38604ce4d1
                   <Label text="delete 1"/>
                   <Label text="delete 3"/>
                 </VBox>
