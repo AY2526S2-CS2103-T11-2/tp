@@ -1,8 +1,12 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_NAME;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -25,9 +29,27 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PARENT_NAME);
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        List<String> nameKeywords;
+        List<String> parentKeywords;
+
+        boolean hasNamePrefix = argMultimap.getValue(PREFIX_NAME).isPresent();
+        boolean hasParentPrefix = argMultimap.getValue(PREFIX_PARENT_NAME).isPresent();
+
+        if (!hasNamePrefix && !hasParentPrefix) {
+            // OPTION 1: No prefixes used.
+            // Treat the whole input as student name keywords (Legacy style).
+            nameKeywords = Arrays.asList(trimmedArgs.split("\\s+"));
+            parentKeywords = Collections.emptyList();
+        } else {
+            // OPTION 2: Prefixes are used.
+            // Extract specifically what the user asked for.
+            nameKeywords = argMultimap.getAllValues(PREFIX_NAME);
+            parentKeywords = argMultimap.getAllValues(PREFIX_PARENT_NAME);
+        }
+
+        return new FindCommand(new NameContainsKeywordsPredicate(nameKeywords, parentKeywords));
     }
-
 }
