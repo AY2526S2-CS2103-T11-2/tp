@@ -18,12 +18,15 @@ public class Person {
 
     // Identity fields
     private final Name name;
+    private final Age age;
     private final Phone phone;
     private final Email email;
 
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+
+    // Parent fields
     private final Name parentName;
     private final Phone parentPhone;
     private final Email parentEmail;
@@ -31,10 +34,12 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Name parentName,
-                  Phone parentPhone, Email parentEmail) {
-        requireAllNonNull(name, phone, email, address, tags, parentName, parentPhone, parentEmail);
+    public Person(Name name, Age age,
+                  Phone phone, Email email, Address address, Set<Tag> tags,
+                  Name parentName, Phone parentPhone, Email parentEmail) {
+        requireAllNonNull(name, age, phone, email, address, tags, parentName, parentPhone, parentEmail);
         this.name = name;
+        this.age = age;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -42,6 +47,10 @@ public class Person {
         this.parentName = parentName;
         this.parentPhone = parentPhone;
         this.parentEmail = parentEmail;
+    }
+
+    public Age getAge() {
+        return age;
     }
 
     public Name getName() {
@@ -110,6 +119,7 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
+                && age.equals(otherPerson.age)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
@@ -122,13 +132,14 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, parentName, parentPhone, parentEmail);
+        return Objects.hash(name, age, phone, email, address, tags, parentName, parentPhone, parentEmail);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
+                .add("age", age)
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
