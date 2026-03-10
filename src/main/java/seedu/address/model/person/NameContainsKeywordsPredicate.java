@@ -14,10 +14,23 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> nameKeywords;
     private final List<String> parentKeywords;
 
+    /**
+     * Constructs a {@code NameContainsKeywordsPredicate} that only filters by the person's name.
+     * The parent keywords list will be initialized as empty.
+     *
+     * @param keywords A list of strings to match against a person's name.
+     */
     public NameContainsKeywordsPredicate(List<String> keywords) {
         this(keywords, Collections.emptyList());
     }
 
+    /**
+     * Constructs a {@code NameContainsKeywordsPredicate} with specific keywords for both
+     * the person's name and their parents' names.
+     *
+     * @param nameKeywords A list of strings to match against a person's name.
+     * @param parentKeywords A list of strings to match against the names of a person's parents.
+     */
     public NameContainsKeywordsPredicate(List<String> nameKeywords, List<String> parentKeywords) {
         this.nameKeywords = nameKeywords;
         this.parentKeywords = parentKeywords;

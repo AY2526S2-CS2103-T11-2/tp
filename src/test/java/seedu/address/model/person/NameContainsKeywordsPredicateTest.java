@@ -20,11 +20,14 @@ public class NameContainsKeywordsPredicateTest {
         List<String> secondList = Arrays.asList("first", "second");
 
         // student name predicates
-        NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(firstList, Collections.emptyList());
-        NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(secondList, Collections.emptyList());
+        NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(
+                firstList, Collections.emptyList());
+        NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(
+                secondList, Collections.emptyList());
 
         // parent name predicates
-        NameContainsKeywordsPredicate parentPredicate = new NameContainsKeywordsPredicate(Collections.emptyList(), firstList);
+        NameContainsKeywordsPredicate parentPredicate = new NameContainsKeywordsPredicate(
+                Collections.emptyList(), firstList);
 
         // same values -> returns true
         assertTrue(firstPredicate.equals(new NameContainsKeywordsPredicate(firstList, Collections.emptyList())));
