@@ -2,13 +2,14 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIETARYREMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Remark;
+import seedu.address.model.person.remarks.Remark;
 
 /**
  * Parses input arguments and creates a new {@code RemarkCommand} object
@@ -21,7 +22,7 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
      */
     public RemarkCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_REMARK);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_REMARK, PREFIX_DIETARYREMARK);
 
         Index index;
         try {
@@ -30,8 +31,18 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE), ive);
         }
 
-        String remark = argMultimap.getValue(PREFIX_REMARK).orElse("");
+        Remark remark;
 
-        return new RemarkCommand(index, new Remark(remark));
+        if (argMultimap.getValue(PREFIX_DIETARYREMARK).isPresent()) {
+            String text = argMultimap.getValue(PREFIX_DIETARYREMARK).get();
+            remark = new Remark(text);
+        } else if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
+            String text = argMultimap.getValue(PREFIX_REMARK).get();
+            remark = new Remark(text);
+        } else {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE));
+        }
+
+        return new RemarkCommand(index, remark);
     }
 }
