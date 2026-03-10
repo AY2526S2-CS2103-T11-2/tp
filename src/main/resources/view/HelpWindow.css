@@ -17,7 +17,6 @@
 #helpMessageContainer {
     -fx-background-color: derive(#1d1d1d, 20%);
     -fx-max-height: 500px;
-    -fx-max-width: 500px;
 }
 
 .help-title {
@@ -38,4 +37,8 @@
 .help-command {
     -fx-font-family: "Consolas";
     -fx-background-color: #f4f4f4;
+}
+
+.example-box {
+    -fx-background-color: #D3D3D3;
 }

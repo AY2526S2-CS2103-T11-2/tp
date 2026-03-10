@@ -30,7 +30,7 @@
                 <padding>
                   <Insets top="10" right="15" bottom="10" left="15"/>
                 </padding>
-                <Label text="Student Care Address Book" styleClass="help-title"/>
+                <Label text="Available Commands" styleClass="help-title"/>
 
                 <Separator/>
 
@@ -38,9 +38,14 @@
                 <Label text="Command:" styleClass="help-subtitle"/>
                 <Label text="add n/[student-name] [optional fields]" styleClass="help-command"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
-                <Label text="add n/James"/>
-                <Label text="add n/James Lim a/5"/>
-                <Label text="add n/James pc/91234567 pe/paul@gmail.com"/>
+                <VBox spacing="2" styleClass="example-box">
+                  <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                  </padding>
+                  <Label text="add n/James" styleClass="help-example"/>
+                  <Label text="add n/James Lim a/5" styleClass="help-example"/>
+                  <Label text="add n/James pc/91234567 pe/paul@gmail.com" styleClass="help-example"/>
+                </VBox>
 
                 <Separator/>
 
@@ -48,8 +53,13 @@
                 <Label text="Command:" styleClass="help-subtitle"/>
                 <Label text="delete [INDEX]" styleClass="help-command"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
-                <Label text="delete 1"/>
-                <Label text="delete 3"/>
+                <VBox spacing="2" styleClass="example-box">
+                  <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                  </padding>
+                  <Label text="delete 1"/>
+                  <Label text="delete 3"/>
+                </VBox>
 
                 <Separator/>
 
@@ -67,14 +77,12 @@
             </content>
           </ScrollPane>
           <Label fx:id="helpMessage" text="Label">
-            <HBox.margin>
-              <Insets right="5.0" />
-            </HBox.margin>
+            <padding>
+              <Insets top="10" right="5" bottom="10"/>
+            </padding>
           </Label>
           <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" text="Copy URL">
-            <HBox.margin>
-              <Insets left="5.0" />
-            </HBox.margin>
+
           </Button>
         </children>
         <opaqueInsets>
