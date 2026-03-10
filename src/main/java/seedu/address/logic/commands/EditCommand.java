@@ -114,8 +114,9 @@ public class EditCommand extends Command {
         Phone updatedParentPhone = editPersonDescriptor.getParentPhone().orElse(personToEdit.getParentPhone());
         Email updatedParentEmail = editPersonDescriptor.getParentEmail().orElse(personToEdit.getParentEmail());
 
-        return new Person(updatedName, updatedAge, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedParentName,
-                updatedParentPhone, updatedParentEmail);
+        return new Person(updatedName, updatedAge, updatedPhone, updatedEmail,
+                updatedAddress, updatedTags,
+                updatedParentName, updatedParentPhone, updatedParentEmail);
     }
 
     @Override
@@ -180,7 +181,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, age, phone, email, address, tags, parentName, parentPhone, parentEmail);
+            return CollectionUtil.isAnyNonNull(name, age, phone, email,
+                    address, tags, parentName, parentPhone, parentEmail);
         }
 
         public void setName(Name name) {

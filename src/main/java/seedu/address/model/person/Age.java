@@ -3,6 +3,13 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents the age of a student.
+ * <p>
+ * An {@code Age} is stored as a string and must be a non-negative number
+ * between 0 and 999 inclusive. Validation is performed using a regular
+ * expression that ensures the value contains 1 to 3 digits.
+ */
 public class Age {
 
     public static final String MESSAGE_CONSTRAINTS =
