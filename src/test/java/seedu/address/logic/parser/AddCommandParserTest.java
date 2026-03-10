@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.AGE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.AGE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
@@ -16,8 +18,6 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_PARENT_PHONE_
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PARENT_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.AGE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.AGE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PARENT_EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PARENT_EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PARENT_NAME_DESC_AMY;

@@ -93,8 +93,8 @@ public class AgeTest {
 
     @Test
     public void equals_differentType_returnsFalse() {
-        assertFalse(new Age("12").equals("12"));  // String vs Age
-        assertFalse(new Age("12").equals(12));    // Integer vs Age
+        assertFalse(new Age("12").equals("12"));
+        assertFalse(new Age("12").equals(12));
     }
 
     @Test
