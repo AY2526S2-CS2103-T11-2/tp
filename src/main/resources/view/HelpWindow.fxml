@@ -5,8 +5,11 @@
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
 <fx:root resizable="false" title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
@@ -19,8 +22,48 @@
         <URL value="@HelpWindow.css" />
       </stylesheets>
 
-      <HBox alignment="CENTER" fx:id="helpMessageContainer">
+      <VBox fx:id="helpMessageContainer">
         <children>
+          <ScrollPane fitToWidth="true">
+            <content>
+              <VBox spacing="12" fx:id="helpContainer">
+
+                <Label text="Student Care Address Book" styleClass="help-title"/>
+
+                <Label text="Add Student" styleClass="help-section"/>
+                <Label text="Command:" styleClass="help-subtitle"/>
+                <Label text="add n/[student-name] [optional fields]" styleClass="help-command"/>
+
+                <Label text="Examples:" styleClass="help-subtitle"/>
+                <Label text="add n/James"/>
+                <Label text="add n/James Lim a/5"/>
+                <Label text="add n/James pc/91234567 pe/paul@gmail.com"/>
+
+                <Separator/>
+
+                <Label text="Delete Student" styleClass="help-section"/>
+                <Label text="Command:" styleClass="help-subtitle"/>
+                <Label text="delete [INDEX]" styleClass="help-command"/>
+
+                <Label text="Examples:" styleClass="help-subtitle"/>
+                <Label text="delete 1"/>
+                <Label text="delete 3"/>
+
+                <Separator/>
+
+                <Label text="List Students" styleClass="help-section"/>
+                <Label text="Command:" styleClass="help-subtitle"/>
+                <Label text="list" styleClass="help-command"/>
+
+                <Separator/>
+
+                <Label text="Help" styleClass="help-section"/>
+                <Label text="Command:" styleClass="help-subtitle"/>
+                <Label text="help" styleClass="help-command"/>
+
+              </VBox>
+            </content>
+          </ScrollPane>
           <Label fx:id="helpMessage" text="Label">
             <HBox.margin>
               <Insets right="5.0" />
@@ -38,7 +81,7 @@
         <padding>
           <Insets bottom="10.0" left="5.0" right="10.0" top="5.0" />
         </padding>
-      </HBox>
+      </VBox>
     </Scene>
   </scene>
 </fx:root>
