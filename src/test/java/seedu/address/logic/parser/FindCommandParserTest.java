@@ -5,6 +5,8 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,13 +24,22 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsFindCommand() {
-        // no leading and trailing whitespaces
+        // No prefixes - should treat as student name keywords
+        List<String> nameKeywords = Arrays.asList("Alice", "Bob");
+        List<String> emptyParentKeywords = Collections.emptyList();
         FindCommand expectedFindCommand =
-                new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Bob")));
+                new FindCommand(new NameContainsKeywordsPredicate(nameKeywords, emptyParentKeywords));
+
         assertParseSuccess(parser, "Alice Bob", expectedFindCommand);
 
-        // multiple whitespaces between keywords
+        // Multiple whitespaces between keywords
         assertParseSuccess(parser, " \n Alice \n \t Bob  \t", expectedFindCommand);
-    }
 
+        // Prefix search - parent name
+        List<String> parentKeywords = Arrays.asList("Tan", "Smith");
+        FindCommand expectedParentCommand =
+                new FindCommand(new NameContainsKeywordsPredicate(Collections.emptyList(), parentKeywords));
+
+        assertParseSuccess(parser, " pn/Tan pn/Smith", expectedParentCommand);
+    }
 }

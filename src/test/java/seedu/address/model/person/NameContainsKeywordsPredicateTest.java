@@ -16,21 +16,24 @@ public class NameContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
-        List<String> firstPredicateKeywordList = Collections.singletonList("first");
-        List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
+        List<String> firstList = Collections.singletonList("first");
+        List<String> secondList = Arrays.asList("first", "second");
 
-        NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
-        NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(secondPredicateKeywordList);
+        // student name predicates
+        NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(
+                firstList, Collections.emptyList());
+        NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(
+                secondList, Collections.emptyList());
 
-        // same object -> returns true
-        assertTrue(firstPredicate.equals(firstPredicate));
+        // parent name predicates
+        NameContainsKeywordsPredicate parentPredicate = new NameContainsKeywordsPredicate(
+                Collections.emptyList(), firstList);
 
         // same values -> returns true
-        NameContainsKeywordsPredicate firstPredicateCopy = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
-        assertTrue(firstPredicate.equals(firstPredicateCopy));
+        assertTrue(firstPredicate.equals(new NameContainsKeywordsPredicate(firstList, Collections.emptyList())));
 
-        // different types -> returns false
-        assertFalse(firstPredicate.equals(1));
+        // different parent name list -> returns false
+        assertFalse(firstPredicate.equals(parentPredicate));
 
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
@@ -76,10 +79,13 @@ public class NameContainsKeywordsPredicateTest {
 
     @Test
     public void toStringMethod() {
-        List<String> keywords = List.of("keyword1", "keyword2");
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
+        List<String> nameKeywords = List.of("keyword1");
+        List<String> parentKeywords = List.of("keyword2");
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(nameKeywords, parentKeywords);
 
-        String expected = NameContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
+        String expected = NameContainsKeywordsPredicate.class.getCanonicalName() + "{"
+                + "nameKeywords=" + nameKeywords + ", "
+                + "parentKeywords=" + parentKeywords + "}";
         assertEquals(expected, predicate.toString());
     }
 }

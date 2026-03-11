@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -10,16 +11,40 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> keywords;
+    private final List<String> nameKeywords;
+    private final List<String> parentKeywords;
 
+    /**
+     * Constructs a {@code NameContainsKeywordsPredicate} that only filters by the person's name.
+     * The parent keywords list will be initialized as empty.
+     *
+     * @param keywords A list of strings to match against a person's name.
+     */
     public NameContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+        this(keywords, Collections.emptyList());
+    }
+
+    /**
+     * Constructs a {@code NameContainsKeywordsPredicate} with specific keywords for both
+     * the person's name and their parents' names.
+     *
+     * @param nameKeywords A list of strings to match against a person's name.
+     * @param parentKeywords A list of strings to match against the names of a person's parents.
+     */
+    public NameContainsKeywordsPredicate(List<String> nameKeywords, List<String> parentKeywords) {
+        this.nameKeywords = nameKeywords;
+        this.parentKeywords = parentKeywords;
     }
 
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
+        boolean nameMatch = !nameKeywords.isEmpty() && nameKeywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+
+        boolean parentMatch = !parentKeywords.isEmpty() && parentKeywords.stream()
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getParentName().fullName, keyword));
+
+        return nameMatch || parentMatch;
     }
 
     @Override
@@ -33,12 +58,16 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
             return false;
         }
 
-        NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        NameContainsKeywordsPredicate otherPredicate = (NameContainsKeywordsPredicate) other;
+        return nameKeywords.equals(otherPredicate.nameKeywords)
+                && parentKeywords.equals(otherPredicate.parentKeywords);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this)
+                .add("nameKeywords", nameKeywords)
+                .add("parentKeywords", parentKeywords)
+                .toString();
     }
 }
