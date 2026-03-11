@@ -105,7 +105,7 @@ class JsonAdaptedPerson {
         }
         final Age modelAge = new Age(age);
 
-        if (phone == null) {
+        if (phone == null   ) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
         }
         if (!Phone.isValidPhone(phone)) {
