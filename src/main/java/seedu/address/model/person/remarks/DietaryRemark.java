@@ -4,7 +4,7 @@ package seedu.address.model.person.remarks;
  * Represents a Person's dietary remark in the address book.
  * Guarantees: immutable; is always valid
  */
-public class DietaryRemark extends Remark{
+public class DietaryRemark extends Remark {
     public final String value;
 
     /**

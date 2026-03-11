@@ -130,7 +130,8 @@ class JsonAdaptedPerson {
         final Remark modelRemark = new Remark(remark);
 
         if (dietaryRemark == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DietaryRemark.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DietaryRemark.class.getSimpleName()));
         }
         final DietaryRemark modelDietaryRemark = new DietaryRemark(dietaryRemark);
 
