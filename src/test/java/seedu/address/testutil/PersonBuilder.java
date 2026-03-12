@@ -8,6 +8,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.remarks.DietaryRemark;
+import seedu.address.model.person.remarks.Remark;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -23,11 +25,15 @@ public class PersonBuilder {
     public static final String DEFAULT_PARENT_NAME = "Parent Bee";
     public static final String DEFAULT_PARENT_PHONE = "98765432";
     public static final String DEFAULT_PARENT_EMAIL = "parent@gmail.com";
+    public static final String DEFAULT_REMARK = "She likes aardvarks.";
+    public static final String DEFAULT_DIETARYREMARK = "Fish";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private Remark remark;
+    private DietaryRemark dietaryRemark;
     private Set<Tag> tags;
     private Name parentName;
     private Phone parentPhone;
@@ -41,6 +47,8 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        remark = new Remark(DEFAULT_REMARK);
+        dietaryRemark = new DietaryRemark(DEFAULT_DIETARYREMARK);
         tags = new HashSet<>();
         parentName = new Name(DEFAULT_PARENT_NAME);
         parentPhone = new Phone(DEFAULT_PARENT_PHONE);
@@ -55,6 +63,8 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        remark = personToCopy.getRemark();
+        dietaryRemark = personToCopy.getDietaryRemark();
         tags = new HashSet<>(personToCopy.getTags());
         parentName = personToCopy.getParentName();
         parentPhone = personToCopy.getParentPhone();
@@ -125,8 +135,30 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Remark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withRemark(String remark) {
+        this.remark = new Remark(remark);
+        return this;
+    }
+
+    /**
+     * Sets the {@code DietaryRemark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withDietaryRemark(String dietaryRemark) {
+        this.dietaryRemark = new DietaryRemark(dietaryRemark);
+        return this;
+    }
+
+    /**
+     * Initializes the {@code Person} object with the current configuration of this builder.
+     *
+     * @return A new instance of {@code Person}.
+     */
     public Person build() {
-        return new Person(name, phone, email, address, tags, parentName, parentPhone, parentEmail);
+        return new Person(name, phone, email, address, tags, parentName, parentPhone, parentEmail,
+                remark, dietaryRemark);
     }
 
 }

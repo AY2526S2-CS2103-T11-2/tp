@@ -29,6 +29,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.remarks.DietaryRemark;
+import seedu.address.model.person.remarks.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -105,13 +107,15 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Remark updatedRemark = personToEdit.getRemark(); // edit command does not allow editing remarks
+        DietaryRemark updatedDietaryRemark = personToEdit.getDietaryRemark();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Name updatedParentName = editPersonDescriptor.getParentName().orElse(personToEdit.getParentName());
         Phone updatedParentPhone = editPersonDescriptor.getParentPhone().orElse(personToEdit.getParentPhone());
         Email updatedParentEmail = editPersonDescriptor.getParentEmail().orElse(personToEdit.getParentEmail());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedParentName,
-                updatedParentPhone, updatedParentEmail);
+                updatedParentPhone, updatedParentEmail, updatedRemark, updatedDietaryRemark);
     }
 
     @Override

@@ -8,7 +8,9 @@
     "tags" : [ "friends" ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
@@ -17,7 +19,9 @@
     "tags" : [ "owesMoney", "friends" ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
@@ -26,7 +30,9 @@
     "tags" : [ ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
@@ -35,7 +41,9 @@
     "tags" : [ "friends" ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
@@ -44,7 +52,9 @@
     "tags" : [ ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
@@ -53,7 +63,9 @@
     "tags" : [ ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   }, {
     "name" : "George Best",
     "phone" : "9482442",
@@ -62,6 +74,8 @@
     "tags" : [ ],
     "parentName": "Parent Bee",
     "parentPhone": "98765432",
-    "parentEmail": "parent@gmail.com"
+    "parentEmail": "parent@gmail.com",
+    "remark" : "",
+    "dietaryRemark" : ""
   } ]
 }

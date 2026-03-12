@@ -34,6 +34,8 @@
       <Label fx:id="parentName" styleClass="cell_small_label" text="\$parentPhone" />
       <Label fx:id="parentPhone" styleClass="cell_small_label" text="\$parentPhone" />
       <Label fx:id="parentEmail" styleClass="cell_small_label" text="\$parentEmail" />
+      <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
+      <Label fx:id="dietaryRemark" styleClass="cell_small_label" text="\$dietaryRemark" />
     </VBox>
   </GridPane>
 </HBox>
