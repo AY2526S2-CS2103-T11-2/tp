@@ -37,6 +37,7 @@
     },
     {
       "src": "DeveloperGuide.md",
+      "title": "Developer Guide",
       "headings": {
         "carecontacts-developer-guide": "CareContacts Developer Guide",
         "acknowledgements": "Acknowledgements",
