@@ -48,8 +48,21 @@ public class FindCommandParser implements Parser<FindCommand> {
             // Extract specifically what the user asked for.
             nameKeywords = argMultimap.getAllValues(PREFIX_NAME);
             parentKeywords = argMultimap.getAllValues(PREFIX_PARENT_NAME);
+
+            if (isAnyPrefixEmpty(nameKeywords, parentKeywords)) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
         }
 
         return new FindCommand(new NameContainsKeywordsPredicate(nameKeywords, parentKeywords));
+    }
+
+    /**
+     * Returns true if any of the provided lists are present but contain only empty strings.
+     */
+    private boolean isAnyPrefixEmpty(List<String> nameKeywords, List<String> parentKeywords) {
+        return nameKeywords.stream().anyMatch(String::isEmpty)
+                || parentKeywords.stream().anyMatch(String::isEmpty);
     }
 }

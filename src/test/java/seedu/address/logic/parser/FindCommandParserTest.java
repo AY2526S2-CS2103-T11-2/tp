@@ -42,4 +42,19 @@ public class FindCommandParserTest {
 
         assertParseSuccess(parser, " pn/Tan pn/Smith", expectedParentCommand);
     }
+
+    @Test
+    public void parse_invalidPrefixArgs_throwsParseException() {
+        // Empty student name prefix
+        assertParseFailure(parser, " n/", String.format(
+                MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+
+        // Empty parent name prefix
+        assertParseFailure(parser, " pn/", String.format(
+                MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+
+        // One valid, one empty
+        assertParseFailure(parser, " n/Alice pn/", String.format(
+                MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+    }
 }
