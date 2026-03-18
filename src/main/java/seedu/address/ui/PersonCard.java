@@ -63,13 +63,14 @@ public class PersonCard extends UiPart<Region> {
             remark.setVisible(false);
             remark.setManaged(false);
         } else {
-            remark.setText(person.getRemark().toString());
+            remark.setText("Remarks: " + person.getRemark().toString());
         }
         if (person.getDietaryRemark().value.isEmpty()) {
             dietaryRemark.setVisible(false);
             dietaryRemark.setManaged(false);
         } else {
-            dietaryRemark.setText(person.getDietaryRemark().toString());
+            dietaryRemark.setText("Dietary Information: "
+                    + person.getDietaryRemark().toString());
         }
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

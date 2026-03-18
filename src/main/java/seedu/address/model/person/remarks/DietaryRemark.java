@@ -19,7 +19,7 @@ public class DietaryRemark extends Remark {
 
     @Override
     public String toString() {
-        return "Dietary Information: " + value;
+        return value;
     }
 
     @Override
