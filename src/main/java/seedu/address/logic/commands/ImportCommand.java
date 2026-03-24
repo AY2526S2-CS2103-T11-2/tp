@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -29,7 +30,7 @@ import seedu.address.model.person.remarks.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
- * Imports persons from a CSV file.
+ * Imports persons from a CSV file into the address book.
  */
 public class ImportCommand extends Command {
 
@@ -48,6 +49,9 @@ public class ImportCommand extends Command {
     public static final String MESSAGE_CSV_INVALID_FORMAT = "Invalid CSV format at line %1$d: %2$s";
     public static final String MESSAGE_SUCCESS = "Imported %1$d person(s). Skipped %2$d duplicate person(s).";
 
+    private static final char CSV_DELIMITER = ',';
+    private static final char CSV_QUOTE = '"';
+
     private static final int MIN_COLUMN_COUNT = 6;
     private static final int MAX_COLUMN_COUNT = 11;
     private static final int TAGS_COLUMN_INDEX = 6;
@@ -59,13 +63,21 @@ public class ImportCommand extends Command {
     private final Path csvFilePath;
 
     /**
-     * Creates an ImportCommand to import persons from {@code csvFilePath}.
+     * @param csvFilePath path of the CSV file to import from
      */
     public ImportCommand(Path csvFilePath) {
         requireNonNull(csvFilePath);
         this.csvFilePath = csvFilePath;
     }
 
+    /**
+     * Executes the import command by reading persons from the configured CSV file
+     * and adding non-duplicate persons to the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return feedback containing imported and skipped duplicate counts
+     * @throws CommandException if the CSV cannot be read or contains invalid data
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -87,6 +99,13 @@ public class ImportCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, importedCount, skippedDuplicates));
     }
 
+    /**
+     * Reads the CSV file and converts each data row into a {@code Person}.
+     *
+     * @param path file path to read from
+     * @return list of persons parsed from the CSV
+     * @throws CommandException if the file cannot be read or a row is invalid
+     */
     private List<Person> readPersonsFromCsv(Path path) throws CommandException {
         final List<String> lines;
         try {
@@ -119,6 +138,14 @@ public class ImportCommand extends Command {
         return persons;
     }
 
+    /**
+     * Parses one CSV row into a {@code Person}.
+     *
+     * @param fields parsed CSV columns for one row
+     * @param lineNumber original CSV line number (1-based), used for error reporting
+     * @return person built from the row data
+     * @throws CommandException if the row contains invalid column count or invalid field values
+     */
     private Person parsePerson(List<String> fields, int lineNumber) throws CommandException {
         if (fields.size() < MIN_COLUMN_COUNT || fields.size() > MAX_COLUMN_COUNT) {
             throw new CommandException(String.format(MESSAGE_CSV_INVALID_FORMAT, lineNumber,
@@ -146,6 +173,13 @@ public class ImportCommand extends Command {
         }
     }
 
+    /**
+     * Parses optional fields from fixed CSV indices.
+     *
+     * @param fields parsed CSV columns for one row
+     * @return parsed optional fields container
+     * @throws ParseException if the tags column contains invalid tag values
+     */
     private ParsedOptionalFields parseOptionalFields(List<String> fields) throws ParseException {
         Set<Tag> tags = new HashSet<>();
         String remark = "";
@@ -166,6 +200,9 @@ public class ImportCommand extends Command {
         return new ParsedOptionalFields(tags, remark, dietaryRemark, classRemark, behaviorRemark);
     }
 
+    /**
+     * Returns an optional field value by index, defaulting to an empty string when absent.
+     */
     private String getOptionalField(List<String> fields, int index) {
         if (fields.size() <= index) {
             return "";
@@ -173,6 +210,13 @@ public class ImportCommand extends Command {
         return fields.get(index);
     }
 
+    /**
+     * Parses the tags cell into a set of {@code Tag}. Empty input yields an empty set.
+     *
+     * @param rawTags raw tags cell value, where tags are separated by semicolons
+     * @return parsed tag set
+     * @throws ParseException if any tag is invalid
+     */
     private Set<Tag> parseTags(String rawTags) throws ParseException {
         Set<Tag> tags = new HashSet<>();
 
@@ -191,6 +235,13 @@ public class ImportCommand extends Command {
         return tags;
     }
 
+    /**
+     * Splits one CSV line into fields, supporting quoted values and escaped quotes.
+     *
+     * @param line one raw CSV line
+     * @return parsed fields for the line
+     * @throws CommandException if the line has an unclosed quoted field
+     */
     private List<String> splitCsvLine(String line) throws CommandException {
         List<String> fields = new ArrayList<>();
         StringBuilder currentField = new StringBuilder();
@@ -199,17 +250,18 @@ public class ImportCommand extends Command {
         for (int i = 0; i < line.length(); i++) {
             char currentChar = line.charAt(i);
 
-            if (currentChar == '"') {
-                if (inQuotes && i + 1 < line.length() && line.charAt(i + 1) == '"') {
-                    currentField.append('"');
-                    i++;
-                } else {
-                    inQuotes = !inQuotes;
-                }
+            if (currentChar == CSV_QUOTE && isEscapedQuote(line, i, inQuotes)) {
+                currentField.append(CSV_QUOTE);
+                i++;
                 continue;
             }
 
-            if (currentChar == ',' && !inQuotes) {
+            if (currentChar == CSV_QUOTE) {
+                inQuotes = !inQuotes;
+                continue;
+            }
+
+            if (currentChar == CSV_DELIMITER && !inQuotes) {
                 fields.add(currentField.toString().trim());
                 currentField.setLength(0);
                 continue;
@@ -226,6 +278,20 @@ public class ImportCommand extends Command {
         return fields;
     }
 
+    /**
+     * Returns true if the current index points to an escaped quote ("")
+     * in a quoted field.
+     */
+    private boolean isEscapedQuote(String line, int index, boolean inQuotes) {
+        return inQuotes
+                && index + 1 < line.length()
+                && line.charAt(index + 1) == CSV_QUOTE;
+    }
+
+    /**
+     * Returns true if the row matches the supported CSV header prefix
+     * (name through parentEmail columns).
+     */
     private boolean isHeader(List<String> fields) {
         if (fields.size() < MIN_COLUMN_COUNT) {
             return false;
@@ -239,6 +305,9 @@ public class ImportCommand extends Command {
                 && normalized(fields.get(5)).equals("parentemail");
     }
 
+    /**
+     * Normalizes a header value by trimming, lowercasing, and removing internal whitespace.
+     */
     private String normalized(String value) {
         return value.trim().toLowerCase(Locale.ROOT).replaceAll("\\s+", "");
     }
@@ -250,6 +319,9 @@ public class ImportCommand extends Command {
         private final String classRemark;
         private final String behaviorRemark;
 
+        /**
+         * Creates a container for optional fields parsed from a CSV row.
+         */
         private ParsedOptionalFields(Set<Tag> tags, String remark, String dietaryRemark,
                                      String classRemark, String behaviorRemark) {
             this.tags = tags;
@@ -276,6 +348,8 @@ public class ImportCommand extends Command {
 
     @Override
     public String toString() {
-        return ImportCommand.class.getCanonicalName() + "{csvFilePath=" + csvFilePath + "}";
+        return new ToStringBuilder(this)
+                .add("csvFilePath", csvFilePath)
+                .toString();
     }
 }
