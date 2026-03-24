@@ -133,10 +133,16 @@ public class HelpWindow extends UiPart<Stage> {
      * @param node
      */
     private void scrollToNode(Node node) {
-        double height = scrollPane.getContent().getBoundsInLocal().getHeight();
+        double totalHeight = scrollPane.getContent().getBoundsInLocal().getHeight();
+        double viewportHeight = scrollPane.getViewportBounds().getHeight();
         double y = node.getBoundsInParent().getMinY();
+        double scrollableHeight = totalHeight - viewportHeight;
 
-        scrollPane.setVvalue(y / height);
+        if (scrollableHeight > 0) {
+            scrollPane.setVvalue(y / scrollableHeight);
+        } else {
+            scrollPane.setVvalue(0.0);
+        }
     }
 
     @FXML

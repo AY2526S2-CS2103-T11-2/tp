@@ -48,6 +48,10 @@ public class PersonCard extends UiPart<Region> {
     private Label remark;
     @FXML
     private Label dietaryRemark;
+    @FXML
+    private Label classRemark;
+    @FXML
+    private Label behaviorRemark;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -65,6 +69,7 @@ public class PersonCard extends UiPart<Region> {
         } else {
             remark.setText("Remarks: " + person.getRemark().toString());
         }
+
         if (person.getDietaryRemark().value.isEmpty()) {
             dietaryRemark.setVisible(false);
             dietaryRemark.setManaged(false);
@@ -72,6 +77,23 @@ public class PersonCard extends UiPart<Region> {
             dietaryRemark.setText("Dietary Information: "
                     + person.getDietaryRemark().toString());
         }
+
+        if (person.getClassRemark().value.isEmpty()) {
+            classRemark.setVisible(false);
+            classRemark.setManaged(false);
+        } else {
+            classRemark.setText("Class: "
+                    + person.getClassRemark().toString());
+        }
+
+        if (person.getBehaviorRemark().value.isEmpty()) {
+            behaviorRemark.setVisible(false);
+            behaviorRemark.setManaged(false);
+        } else {
+            behaviorRemark.setText("Behavioral Information: "
+                    + person.getBehaviorRemark().toString());
+        }
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

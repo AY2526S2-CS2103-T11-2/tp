@@ -16,6 +16,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.remarks.BehaviorRemark;
+import seedu.address.model.person.remarks.ClassRemark;
 import seedu.address.model.person.remarks.DietaryRemark;
 import seedu.address.model.person.remarks.Remark;
 import seedu.address.model.tag.Tag;
@@ -32,6 +34,8 @@ class JsonAdaptedPerson {
     private final String address;
     private final String remark;
     private final String dietaryRemark;
+    private final String classRemark;
+    private final String behaviorRemark;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String parentName;
     private final String parentPhone;
@@ -49,12 +53,16 @@ class JsonAdaptedPerson {
                              @JsonProperty("parentPhone") String parentPhone,
                              @JsonProperty("parentEmail") String parentEmail,
                              @JsonProperty("remark") String remark,
-                             @JsonProperty("dietaryRemark") String dietaryRemark) {
+                             @JsonProperty("dietaryRemark") String dietaryRemark,
+                             @JsonProperty("classRemark") String classRemark,
+                             @JsonProperty("behaviorRemark") String behaviorRemark) {
         this.name = name;
         this.age = age;
         this.address = address;
         this.remark = remark;
         this.dietaryRemark = dietaryRemark;
+        this.classRemark = classRemark;
+        this.behaviorRemark = behaviorRemark;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -72,6 +80,8 @@ class JsonAdaptedPerson {
         address = source.getAddress().value;
         remark = source.getRemark().value;
         dietaryRemark = source.getDietaryRemark().value;
+        classRemark = source.getClassRemark().value;
+        behaviorRemark = source.getBehaviorRemark().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -126,6 +136,18 @@ class JsonAdaptedPerson {
         }
         final DietaryRemark modelDietaryRemark = new DietaryRemark(dietaryRemark);
 
+        if (classRemark == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ClassRemark.class.getSimpleName()));
+        }
+        final ClassRemark modelClassRemark = new ClassRemark(classRemark);
+
+        if (behaviorRemark == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    BehaviorRemark.class.getSimpleName()));
+        }
+        final BehaviorRemark modelBehaviorRemark = new BehaviorRemark(behaviorRemark);
+
         if (parentName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -152,7 +174,7 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelAge, modelAddress, modelTags, modelParentName, modelParentPhone,
-                modelParentEmail, modelRemark, modelDietaryRemark);
+                modelParentEmail, modelRemark, modelDietaryRemark, modelClassRemark, modelBehaviorRemark);
     }
 
 }

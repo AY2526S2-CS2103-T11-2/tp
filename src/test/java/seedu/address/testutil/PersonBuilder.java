@@ -9,6 +9,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.remarks.BehaviorRemark;
+import seedu.address.model.person.remarks.ClassRemark;
 import seedu.address.model.person.remarks.DietaryRemark;
 import seedu.address.model.person.remarks.Remark;
 import seedu.address.model.tag.Tag;
@@ -27,12 +29,16 @@ public class PersonBuilder {
     public static final String DEFAULT_PARENT_EMAIL = "parent@gmail.com";
     public static final String DEFAULT_REMARK = "She likes aardvarks.";
     public static final String DEFAULT_DIETARYREMARK = "Fish";
+    public static final String DEFAULT_CLASSREMARK = "1-A";
+    public static final String DEFAULT_BEHAVIORREMARK = "Likes to scream";
 
     private Name name;
     private Age age;
     private Address address;
     private Remark remark;
     private DietaryRemark dietaryRemark;
+    private ClassRemark classRemark;
+    private BehaviorRemark behaviorRemark;
     private Set<Tag> tags;
     private Name parentName;
     private Phone parentPhone;
@@ -47,6 +53,8 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         remark = new Remark(DEFAULT_REMARK);
         dietaryRemark = new DietaryRemark(DEFAULT_DIETARYREMARK);
+        classRemark = new ClassRemark(DEFAULT_CLASSREMARK);
+        behaviorRemark = new BehaviorRemark(DEFAULT_BEHAVIORREMARK);
         tags = new HashSet<>();
         parentName = new Name(DEFAULT_PARENT_NAME);
         parentPhone = new Phone(DEFAULT_PARENT_PHONE);
@@ -62,6 +70,8 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
         dietaryRemark = personToCopy.getDietaryRemark();
+        classRemark = personToCopy.getClassRemark();
+        behaviorRemark = personToCopy.getBehaviorRemark();
         tags = new HashSet<>(personToCopy.getTags());
         parentName = personToCopy.getParentName();
         parentPhone = personToCopy.getParentPhone();
@@ -141,12 +151,29 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code ClassRemark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withClassRemark(String classRemark) {
+        this.classRemark = new ClassRemark(classRemark);
+        return this;
+    }
+
+    /**
+     * Sets the {@code BehaviorRemark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withBehaviorRemark(String behaviorRemark) {
+        this.behaviorRemark = new BehaviorRemark(behaviorRemark);
+        return this;
+    }
+
+    /**
      * Initializes the {@code Person} object with the current configuration of this builder.
      *
      * @return A new instance of {@code Person}.
      */
     public Person build() {
-        return new Person(name, age, address, tags, parentName, parentPhone, parentEmail, remark, dietaryRemark);
+        return new Person(name, age, address, tags, parentName, parentPhone, parentEmail,
+                remark, dietaryRemark, classRemark, behaviorRemark);
     }
 
 }

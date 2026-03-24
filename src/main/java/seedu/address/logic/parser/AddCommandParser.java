@@ -20,6 +20,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.remarks.BehaviorRemark;
+import seedu.address.model.person.remarks.ClassRemark;
 import seedu.address.model.person.remarks.DietaryRemark;
 import seedu.address.model.person.remarks.Remark;
 import seedu.address.model.tag.Tag;
@@ -56,13 +58,15 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Remark remark = new Remark(""); // add command does not allow adding remarks straight away
         DietaryRemark dietaryRemark = new DietaryRemark("");
+        ClassRemark classRemark = new ClassRemark("");
+        BehaviorRemark behaviorRemark = new BehaviorRemark("");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Name parentName = ParserUtil.parseName(argMultimap.getValue(PREFIX_PARENT_NAME).get());
         Phone parentPhone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PARENT_PHONE).get());
         Email parentEmail = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_PARENT_EMAIL).get());
 
         Person person = new Person(name, age, address, tagList, parentName, parentPhone, parentEmail, remark,
-                dietaryRemark);
+                dietaryRemark, classRemark, behaviorRemark);
 
         return new AddCommand(person);
     }

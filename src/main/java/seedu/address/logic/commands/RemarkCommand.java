@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BEHAVIOR_REMARK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CLASS_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIETARY_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -13,6 +15,8 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.remarks.BehaviorRemark;
+import seedu.address.model.person.remarks.ClassRemark;
 import seedu.address.model.person.remarks.DietaryRemark;
 import seedu.address.model.person.remarks.Remark;
 
@@ -28,14 +32,22 @@ public class RemarkCommand extends Command {
             + "Existing remark will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_REMARK + "[REMARK] or "
-            + PREFIX_DIETARY_REMARK + "[DIETARY REMARK]\n"
+            + PREFIX_DIETARY_REMARK + "[DIETARY REMARK] or "
+            + PREFIX_BEHAVIOR_REMARK + "[BEHAVIOR REMARK] or "
+            + PREFIX_CLASS_REMARK + "[CLASS].\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_REMARK + "Likes to swim.";
+            + PREFIX_REMARK + "Likes to swim."
+            + PREFIX_DIETARY_REMARK + "Salmon.";
 
-    public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Person: %1$s";
-    public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Person: %1$s";
-    public static final String MESSAGE_ADD_DIETARY_REMARK_SUCCESS = "Added dietary information to Person: %1$s";
-    public static final String MESSAGE_DELETE_DIETARY_REMARK_SUCCESS = "Removed dietary information from Person: %1$s";
+    public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Student: %1$s";
+    public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Student: %1$s";
+    public static final String MESSAGE_ADD_DIETARY_REMARK_SUCCESS = "Added dietary information to Student: %1$s";
+    public static final String MESSAGE_DELETE_DIETARY_REMARK_SUCCESS = "Removed dietary information from Student: %1$s";
+    public static final String MESSAGE_ADD_CLASS_REMARK_SUCCESS = "Added class to Student: %1$s";
+    public static final String MESSAGE_DELETE_CLASS_REMARK_SUCCESS = "Removed class from Student: %1$s";
+    public static final String MESSAGE_ADD_BEHAVIOR_REMARK_SUCCESS = "Added behavior information to Student: %1$s";
+    public static final String MESSAGE_DELETE_BEHAVIOR_REMARK_SUCCESS =
+            "Removed behavior information from Student: %1$s";
 
 
     private final Index index;
@@ -62,10 +74,16 @@ public class RemarkCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Remark updatedRemark = personToEdit.getRemark();
         DietaryRemark updatedDietaryRemark = personToEdit.getDietaryRemark();
+        ClassRemark updatedClassRemark = personToEdit.getClassRemark();
+        BehaviorRemark updatedBehaviorRemark = personToEdit.getBehaviorRemark();
 
         for (Remark r : remarks) {
             if (r instanceof DietaryRemark) {
                 updatedDietaryRemark = (DietaryRemark) r;
+            } else if (r instanceof ClassRemark) {
+                updatedClassRemark = (ClassRemark) r;
+            } else if (r instanceof BehaviorRemark) {
+                updatedBehaviorRemark = (BehaviorRemark) r;
             } else {
                 updatedRemark = r;
             }
@@ -74,7 +92,7 @@ public class RemarkCommand extends Command {
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getAge(),
                 personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getParentName(),
                 personToEdit.getParentPhone(), personToEdit.getParentEmail(),
-                updatedRemark, updatedDietaryRemark);
+                updatedRemark, updatedDietaryRemark, updatedClassRemark, updatedBehaviorRemark);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -94,6 +112,14 @@ public class RemarkCommand extends Command {
                 messages.add(remark.value.isEmpty()
                         ? MESSAGE_DELETE_DIETARY_REMARK_SUCCESS
                         : MESSAGE_ADD_DIETARY_REMARK_SUCCESS);
+            } else if (remark instanceof ClassRemark) {
+                messages.add(remark.value.isEmpty()
+                        ? MESSAGE_DELETE_CLASS_REMARK_SUCCESS
+                        : MESSAGE_ADD_CLASS_REMARK_SUCCESS);
+            } else if (remark instanceof BehaviorRemark) {
+                messages.add(remark.value.isEmpty()
+                        ? MESSAGE_DELETE_BEHAVIOR_REMARK_SUCCESS
+                        : MESSAGE_ADD_BEHAVIOR_REMARK_SUCCESS);
             } else {
                 messages.add(remark.value.isEmpty()
                         ? MESSAGE_DELETE_REMARK_SUCCESS

@@ -8,7 +8,9 @@
     "parentPhone": "98765432",
     "parentEmail": "parent@gmail.com",
     "remark" : "",
-    "dietaryRemark" : ""
+    "dietaryRemark" : "",
+    "classRemark" : "",
+    "behaviorRemark" : ""
   }, {
     "name": "Alice Pauline",
     "age": "11",
@@ -17,6 +19,8 @@
     "parentPhone": "98765432",
     "parentEmail": "parent@gmail.com",
     "remark" : "",
-    "dietaryRemark" : ""
+    "dietaryRemark" : "",
+    "classRemark" : "",
+    "behaviorRemark" : ""
   } ]
 }

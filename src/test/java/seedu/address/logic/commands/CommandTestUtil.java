@@ -38,6 +38,10 @@ public class CommandTestUtil {
     public static final String VALID_REMARK_BOB = "Favourite pastime: Eating";
     public static final String VALID_DIETARYREMARK_AMY = "Fish";
     public static final String VALID_DIETARYREMARK_BOB = "Scallops";
+    public static final String VALID_CLASSREMARK_AMY = "2-A";
+    public static final String VALID_CLASSREMARK_BOB = "1-B";
+    public static final String VALID_BEHAVIORREMARK_AMY = "Likes to shout";
+    public static final String VALID_BEHAVIORREMARK_BOB = "Likes to sleep";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_PARENT_NAME_AMY = "Parent Bee";
