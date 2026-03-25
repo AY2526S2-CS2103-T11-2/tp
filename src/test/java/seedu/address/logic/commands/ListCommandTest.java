@@ -29,13 +29,13 @@ public class ListCommandTest {
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
         assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS
-                + ListCommand.SortParameter.DEFAULT_ORDER, expectedModel);
+                + ListCommand.SortParameter.NONE, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS
-                + ListCommand.SortParameter.DEFAULT_ORDER, expectedModel);
+                + ListCommand.SortParameter.NONE, expectedModel);
     }
 }

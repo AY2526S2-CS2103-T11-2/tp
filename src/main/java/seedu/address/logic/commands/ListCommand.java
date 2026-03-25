@@ -19,7 +19,8 @@ public class ListCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Listed all persons, sorted by: ";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists your contacts. Sorts by the specified parameter if provided."
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Lists your contacts. Sorts by the specified parameter if provided.\n"
             + "Use at most one of the following parameters: "
             + PREFIX_NAME + " | "
             + PREFIX_AGE + " | "
@@ -39,7 +40,7 @@ public class ListCommand extends Command {
         PARENT_NAME("parent name"),
         PARENT_PHONE("parent phone"),
         PARENT_EMAIL("parent email"),
-        DEFAULT_ORDER("default order");
+        NONE("no order applied");
 
         private final String parameterName;
 
@@ -56,7 +57,7 @@ public class ListCommand extends Command {
     private final SortParameter sortParameter;
 
     public ListCommand() {
-        this.sortParameter = SortParameter.DEFAULT_ORDER;
+        this.sortParameter = SortParameter.NONE;
     }
 
     public ListCommand(SortParameter sortParameter) {
