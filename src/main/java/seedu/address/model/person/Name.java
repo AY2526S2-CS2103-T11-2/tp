@@ -50,19 +50,6 @@ public class Name {
         return fullName.replaceAll("\\s+", " ").trim().toLowerCase();
     }
 
-    /**
-     * Returns true if this name is equal to another name after normalization.
-     * Normalization is defined by {@link #normalizeName()}.
-     *
-     * @param otherName the name to compare against
-     * @return true if both names are equal after normalization
-     * @throws NullPointerException if otherName is null
-     */
-    public boolean isSameNormalizedName(Name otherName) {
-        requireNonNull(otherName);
-        return normalizeName().equals(otherName.normalizeName());
-    }
-
     @Override
     public String toString() {
         return fullName;

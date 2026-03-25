@@ -76,18 +76,4 @@ public class NameTest {
         Name name = new Name("JoHn DoE");
         assertEquals("john doe", name.normalizeName());
     }
-
-    @Test
-    public void isSameNormalizedName_sameAfterNormalization_returnsTrue() {
-        Name n1 = new Name("John Doe");
-        Name n2 = new Name("john   doe ");
-        assertTrue(n1.isSameNormalizedName(n2));
-    }
-
-    @Test
-    public void isSameNormalizedName_differentNames_returnsFalse() {
-        Name n1 = new Name("John Doe");
-        Name n2 = new Name("Jane Doe");
-        assertFalse(n1.isSameNormalizedName(n2));
-    }
 }

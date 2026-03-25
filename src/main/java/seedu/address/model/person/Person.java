@@ -114,9 +114,9 @@ public class Person {
      * @return true if both persons have equal normalized names
      * @throws NullPointerException if otherPerson is null
      */
-    public boolean hasSameNormalizedName(Person otherPerson) {
+    public boolean hasSimilarName(Person otherPerson) {
         requireNonNull(otherPerson);
-        return getName().isSameNormalizedName(otherPerson.getName());
+        return getName().normalizeName().equals(otherPerson.getName().normalizeName());
     }
 
     /**

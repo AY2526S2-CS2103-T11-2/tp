@@ -94,7 +94,7 @@ public class PersonTest {
         Person p1 = new PersonBuilder().withName("John Doe").build();
         Person p2 = new PersonBuilder().withName("John Doe").build();
 
-        assertTrue(p1.hasSameNormalizedName(p2));
+        assertTrue(p1.hasSimilarName(p2));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class PersonTest {
         Person p1 = new PersonBuilder().withName("John   Doe").build();
         Person p2 = new PersonBuilder().withName("john doe  ").build();
 
-        assertTrue(p1.hasSameNormalizedName(p2));
+        assertTrue(p1.hasSimilarName(p2));
     }
 
     @Test
@@ -110,14 +110,14 @@ public class PersonTest {
         Person p1 = new PersonBuilder().withName("John Doe").build();
         Person p2 = new PersonBuilder().withName("Jane Doe").build();
 
-        assertFalse(p1.hasSameNormalizedName(p2));
+        assertFalse(p1.hasSimilarName(p2));
     }
 
     @Test
     public void hasSameNormalizedName_null_throwsNullPointerException() {
         Person p = new PersonBuilder().withName("John Doe").build();
 
-        assertThrows(NullPointerException.class, () -> p.hasSameNormalizedName(null));
+        assertThrows(NullPointerException.class, () -> p.hasSimilarName(null));
     }
 
     @Test
@@ -125,8 +125,8 @@ public class PersonTest {
         Person p1 = new PersonBuilder().withName("John   Doe").build();
         Person p2 = new PersonBuilder().withName("john doe").build();
 
-        assertTrue(p1.hasSameNormalizedName(p2));
-        assertTrue(p2.hasSameNormalizedName(p1));
+        assertTrue(p1.hasSimilarName(p2));
+        assertTrue(p2.hasSimilarName(p1));
     }
 
     @Test
@@ -134,8 +134,8 @@ public class PersonTest {
         Person p1 = new PersonBuilder().withName("John Doe").build();
         Person p2 = new PersonBuilder().withName("john doe").build();
 
-        boolean first = p1.hasSameNormalizedName(p2);
-        boolean second = p1.hasSameNormalizedName(p2);
+        boolean first = p1.hasSimilarName(p2);
+        boolean second = p1.hasSimilarName(p2);
 
         assertEquals(first, second);
     }
@@ -144,6 +144,6 @@ public class PersonTest {
     public void hasSameNormalizedName_sameObject_returnsTrue() {
         Person p = new PersonBuilder().withName("John Doe").build();
 
-        assertTrue(p.hasSameNormalizedName(p));
+        assertTrue(p.hasSimilarName(p));
     }
 }
