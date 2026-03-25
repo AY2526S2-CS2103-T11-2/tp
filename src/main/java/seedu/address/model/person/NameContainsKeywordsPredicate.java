@@ -23,7 +23,9 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.parser.Prefix;
 
 /**
- * Tests that a {@code Person}'s attributes match any of the keywords given for specified prefixes.
+ * Tests that a {@code Person}'s attributes match the keywords provided by the user.
+ * Each key in the map represents a specific prefix (e.g., n/, a/, pn/), and the
+ * associated list contains the search keywords input by the user for that field.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final Map<Prefix, List<String>> keywordsMap;
@@ -42,10 +44,9 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     /**
-     * Constructs a {@code NameContainsKeywordsPredicate} with specific keywords for multi-parameter
-     * searches
-     *
-     * @param keywordsMap A map of keywords
+     * @param keywordsMap A map where each key is a prefix and the value is a list of
+     * user-provided keywords to match against the corresponding
+     * field in the Address Book.
      */
     public NameContainsKeywordsPredicate(Map<Prefix, List<String>> keywordsMap) {
         this.keywordsMap = keywordsMap;
