@@ -2,8 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -22,6 +24,11 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX_RANGE =
+            "Index range must be in the format START-END (e.g. 1-3),\n"
+                    + "where both are positive integers and the start is less than or equal to the end.";
+    public static final String RANGE_SEPARATOR = "-";
+    public static final String WHITESPACE_REGEX = "\\s+";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -34,6 +41,57 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses a range string (e.g., "3-5") into a list of Index objects.
+     *
+     * @param rangePart The string containing the hyphenated range.
+     * @return A list of Index objects within the specified range.
+     * @throws ParseException if the format is invalid or start index is greater than end index.
+     */
+    public static List<Index> parseRange(String rangePart) throws ParseException {
+        String[] rangeValues = rangePart.split(RANGE_SEPARATOR);
+
+        if (rangeValues.length != 2) {
+            throw new ParseException(MESSAGE_INVALID_INDEX_RANGE);
+        }
+
+        Index start = ParserUtil.parseIndex(rangeValues[0]);
+        Index end = ParserUtil.parseIndex(rangeValues[1]);
+
+        if (start.getZeroBased() > end.getZeroBased()) {
+            throw new ParseException(MESSAGE_INVALID_INDEX_RANGE);
+        }
+
+        List<Index> rangeIndices = new ArrayList<>();
+        for (int i = start.getOneBased(); i <= end.getOneBased(); i++) {
+            rangeIndices.add(Index.fromOneBased(i));
+        }
+
+        return rangeIndices;
+    }
+
+    /**
+     * Parses the arguments string into a list of Index objects.
+     *
+     * @param args The non-empty trimmed argument string.
+     * @return A list of unique Index objects.
+     * @throws ParseException if any part of the string is not a valid index or range.
+     */
+    public static List<Index> parseIndices(String args) throws ParseException {
+        List<Index> indices = new ArrayList<>();
+        String[] parts = args.split(WHITESPACE_REGEX);
+
+        for (String part : parts) {
+            if (part.contains(RANGE_SEPARATOR)) {
+                indices.addAll(parseRange(part));
+            } else {
+                indices.add(ParserUtil.parseIndex(part));
+            }
+        }
+
+        return indices;
     }
 
     /**

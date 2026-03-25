@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -33,8 +34,16 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String INVALID_AGE = "12a";
+    private static final String VALID_AGE = "21";
 
     private static final String WHITESPACE = " \t\r\n";
+
+    // Constants for range/multiple indices tests
+    private static final String VALID_RANGE = "1-3";
+    private static final String INVALID_RANGE_FORMAT = "1-2-3";
+    private static final String INVALID_RANGE_ORDER = "3-1";
+    private static final String VALID_INDICES_MIXED = "1 3-5 7";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -192,5 +201,28 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseAge_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseAge((String) null));
+    }
+
+    @Test
+    public void parseAge_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge(INVALID_AGE));
+    }
+
+    @Test
+    public void parseAge_validValueWithoutWhitespace_returnsAge() throws Exception {
+        Age expectedAge = new Age(VALID_AGE);
+        assertEquals(expectedAge, ParserUtil.parseAge(VALID_AGE));
+    }
+
+    @Test
+    public void parseAge_validValueWithWhitespace_returnsTrimmedAge() throws Exception {
+        String ageWithWhitespace = WHITESPACE + VALID_AGE + WHITESPACE;
+        Age expectedAge = new Age(VALID_AGE);
+        assertEquals(expectedAge, ParserUtil.parseAge(ageWithWhitespace));
     }
 }
