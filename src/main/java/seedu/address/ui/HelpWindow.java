@@ -44,16 +44,10 @@ public class HelpWindow extends UiPart<Stage> {
     private Label listSection;
 
     @FXML
-    private Label addRemarkSection;
+    private Label remarkSection;
 
     @FXML
-    private Label deleteRemarkSection;
-
-    @FXML
-    private Label findStudentSection;
-
-    @FXML
-    private Label findParentSection;
+    private Label findSection;
 
     /**
      * Creates a new HelpWindow.
@@ -161,22 +155,12 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     @FXML
-    private void goToAddRemark() {
-        scrollToNode(addRemarkSection);
+    private void goToRemark() {
+        scrollToNode(remarkSection);
     }
 
     @FXML
-    private void goToDeleteRemark() {
-        scrollToNode(deleteRemarkSection);
-    }
-
-    @FXML
-    private void goToFindStudent() {
-        scrollToNode(findStudentSection);
-    }
-
-    @FXML
-    private void goToFindParent() {
-        scrollToNode(findParentSection);
+    private void goToFind() {
+        scrollToNode(findSection);
     }
 }

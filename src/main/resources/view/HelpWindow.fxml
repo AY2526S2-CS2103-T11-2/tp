@@ -27,15 +27,11 @@
         <children>
           <VBox spacing="8" styleClass="nav-panel">
             <HBox>
-              <Hyperlink text="Add" onAction="#goToAdd"/>
-              <Hyperlink text="Delete" onAction="#goToDelete"/>
-              <Hyperlink text="List" onAction="#goToList"/>
-            </HBox>
-            <HBox>
-              <Hyperlink text="Add remark" onAction="#goToAddRemark"/>
-              <Hyperlink text="Delete remark" onAction="#goToDeleteRemark"/>
-              <Hyperlink text="Find by student" onAction="#goToFindStudent"/>
-              <Hyperlink text="Find by parent" onAction="#goToFindParent"/>
+              <Hyperlink text="add" onAction="#goToAdd"/>
+              <Hyperlink text="delete" onAction="#goToDelete"/>
+              <Hyperlink text="list" onAction="#goToList"/>
+              <Hyperlink text="remark" onAction="#goToRemark"/>
+              <Hyperlink text="find" onAction="#goToFind"/>
             </HBox>
           </VBox>
           <ScrollPane fitToWidth="true" fx:id="scrollPane">
@@ -77,7 +73,7 @@
 
                 <Separator/>
 
-                <Label fx:id="addRemarkSection" text="Add a remark on a student" styleClass="help-section"/>
+                <Label fx:id="remarkSection" text="Remark" styleClass="help-section"/>
                 <Label text="Command:" styleClass="help-subtitle"/>
                 <Label wrapText="true" text="remark INDEX r/GENERAL_REMARK d/DIETARY_INFORMATION c/CLASS_INFORMATION b/BEHAVIORAL_INFORMATION" styleClass="help-command"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
@@ -93,50 +89,33 @@
 
                 <Separator/>
 
-                <Label fx:id="deleteRemarkSection" text="Delete a remark on a student" styleClass="help-section"/>
+                <Label fx:id="listSection" text="List all students" styleClass="help-section"/>
+                <Label text="Lists all students. If a prefix is provided, the list is sorted by that field." />
                 <Label text="Command:" styleClass="help-subtitle"/>
-                <Label text="delete INDEX r/ d/" styleClass="help-command"/>
+                <Label text="list [PREFIX]" styleClass="help-command"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
                 <VBox spacing="2" styleClass="example-box">
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
-                  <Label text="remark 1 r/"/>
-                  <Label text="remark 1 d/"/>
-                  <Label text="remark 1 r/ d/"/>
+                  <Label text="list n/"/>
+                  <Label text="list pn/"/>
+                  <Label text="list ag/"/>
                 </VBox>
 
                 <Separator/>
 
-                <Label fx:id="listSection" text="List all students" styleClass="help-section"/>
+                <Label fx:id="findSection" text="Find" styleClass="help-section"/>
                 <Label text="Command:" styleClass="help-subtitle"/>
-                <Label text="list" styleClass="help-command"/>
-
-                <Separator/>
-
-                <Label fx:id="findStudentSection" text="Find by student name" styleClass="help-section"/>
-                <Label text="Command:" styleClass="help-subtitle"/>
-                <Label text="find n/STUDENT_NAME" styleClass="help-command"/>
+                <Label text="find PREFIX/KEYWORD" styleClass="help-command"/>
                 <Label text="Examples:" styleClass="help-subtitle"/>
                 <VBox spacing="2" styleClass="example-box">
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
                   <Label text="find n/Jane"/>
-                  <Label text="find n/Jane Doe"/>
-                </VBox>
-
-                <Separator/>
-
-                <Label fx:id="findParentSection" text="Find by parent name" styleClass="help-section"/>
-                <Label text="Command:" styleClass="help-subtitle"/>
-                <Label text="find pn/PARENT_NAME" styleClass="help-command"/>
-                <VBox spacing="2" styleClass="example-box">
-                  <padding>
-                    <Insets top="15" right="15" bottom="15" left="15"/>
-                  </padding>
-                  <Label text="find n/John"/>
-                  <Label text="find n/Jonathan Tay Jun Le"/>
+                  <Label text="find pn/Jane Doe"/>
+                  <Label text="find a/11"/>
                 </VBox>
 
               </VBox>
