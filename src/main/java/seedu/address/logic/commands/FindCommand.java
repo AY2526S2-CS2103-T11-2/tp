@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_NAME;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -17,10 +15,11 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds persons whose names or parents' names contain \n"
-            + "any of the specified keywords (case-insensitive) and displays them as a list with index numbers. \n"
-            + "Parameters: [" + PREFIX_NAME + "NAME] [" + PREFIX_PARENT_NAME + "PARENT_NAME]...\n"
-            + "Example: " + COMMAND_WORD + " n/alice pn/john";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds persons by attributes.\n"
+            + "Parameters: [NAME...] [n/NAME] [a/AGE] [ad/ADDRESS] [t/TAG] "
+            + "[pn/PARENT_NAME] [pc/PARENT_PHONE] [pe/PARENT_EMAIL] "
+            + "[d/DIETARY] [c/CLASS] [b/BEHAVIOR]\n"
+            + "Example: " + COMMAND_WORD + " n/Alice a/15 d/Vegetarian";
 
     private final NameContainsKeywordsPredicate predicate;
 
