@@ -1,0 +1,25 @@
+@startuml
+header Student Contact Lifecycle
+state "Active Student" as Active
+state "Archived Student" as Archived
+state "Deleted" as Deleted <<low>>
+
+[*] --> Active : add n/Student...
+
+Active --> Archived : archive [index]
+note on link
+  Student is hidden
+  from main list
+end note
+
+Archived --> Active : restore [index]
+note on link
+  Student returns
+  to main list
+end note
+
+Active --> Deleted : delete [index]
+Archived --> Deleted : delete [index]
+
+Deleted --> [*]
+@enduml
