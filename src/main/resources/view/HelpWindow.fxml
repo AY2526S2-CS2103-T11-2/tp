@@ -53,8 +53,8 @@
                   <padding>
                     <Insets top="10" right="15" bottom="10" left="15"/>
                   </padding>
-                  <Label wrapText="True" text="add n/James Cook a/12 ad/Blk 132 Edgedale Plains, #15-96 pn/Madison Cook pc/87654321 pe/maddie@gmail.com"/>
-                  <Label wrapText="True" text="add n/Mary Chew a/7 ad/Blk 123 Bukit Merah Lane, #12-23 pn/Augusta Chew pc/12345678 pe/augusta@email.com t/allergies"/>
+                  <Label wrapText="True" text="1. add n/James Cook a/12 ad/Blk 132 Edgedale Plains, #15-96 pn/Madison Cook pc/87654321 pe/maddie@gmail.com"/>
+                  <Label wrapText="True" text="2. add n/Mary Chew a/7 ad/Blk 123 Bukit Merah Lane, #12-23 pn/Augusta Chew pc/12345678 pe/augusta@email.com t/allergies"/>
                 </VBox>
 
                 <Separator/>
@@ -67,8 +67,8 @@
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
-                  <Label text="delete 1"/>
-                  <Label text="delete 3"/>
+                  <Label text="1. delete 1"/>
+                  <Label text="2. delete 3"/>
                 </VBox>
 
                 <Separator/>
@@ -91,9 +91,9 @@
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
-                  <Label text="remark 1 r/enjoys sports"/>
-                  <Label text="remark 1 d/allergic to shellfish"/>
-                  <Label text="remark 1 r/enjoys sports d/allergic to shellfish"/>
+                  <Label text="1. remark 1 r/enjoys sports"/>
+                  <Label text="2. remark 1 d/allergic to shellfish"/>
+                  <Label text="3. remark 1 r/enjoys sports d/allergic to shellfish"/>
                   <Label wrapText="true" text="remark 1 r/enjoys sports d/allergic to shellfish c/1C b/very energetic"/>
                 </VBox>
 
@@ -118,9 +118,9 @@
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
-                  <Label text="list n/"/>
-                  <Label text="list pn/"/>
-                  <Label text="list ag/"/>
+                  <Label text="1. list n/"/>
+                  <Label text="2. list pn/"/>
+                  <Label text="3. list ag/"/>
                 </VBox>
 
                 <Separator/>
@@ -142,9 +142,9 @@
                   <padding>
                     <Insets top="15" right="15" bottom="15" left="15"/>
                   </padding>
-                  <Label text="find n/Jane"/>
-                  <Label text="find pn/Jane Doe n/Jane"/>
-                  <Label text="find a/11"/>
+                  <Label text="1. find n/Jane"/>
+                  <Label text="2. find pn/Jane Doe n/Jane"/>
+                  <Label text="3. find a/11"/>
                 </VBox>
 
               </VBox>
