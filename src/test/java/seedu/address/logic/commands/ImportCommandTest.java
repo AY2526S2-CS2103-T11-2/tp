@@ -145,6 +145,10 @@ public class ImportCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        public boolean hasSimilarPerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
@@ -162,6 +166,30 @@ public class ImportCommandTest {
 
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void sortFilteredPersonListByName() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void sortFilteredPersonListByAge() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void sortFilteredPersonListByParentName() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void sortFilteredPersonListByParentPhone() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void sortFilteredPersonListByParentEmail() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void clearFilteredPersonListSorting() {
             throw new AssertionError("This method should not be called.");
         }
     }
