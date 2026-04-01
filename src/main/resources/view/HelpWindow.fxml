@@ -100,7 +100,6 @@
                 <Separator/>
 
                 <Label fx:id="listSection" text="List all students" styleClass="help-section"/>
-                <Label text="Lists all students. If a prefix is provided, the list is sorted by that field." />
                 <Label text="Command:" styleClass="help-subtitle"/>
                 <Label text="list [PREFIX]" styleClass="help-command"/>
 
