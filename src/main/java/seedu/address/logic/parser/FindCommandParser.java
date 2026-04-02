@@ -53,7 +53,6 @@ public class FindCommandParser implements Parser<FindCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
-        
         // 1. Check for invalid prefixes (any word ending in / that isn't allowed)
         checkForInvalidPrefixes(trimmedArgs);
 
