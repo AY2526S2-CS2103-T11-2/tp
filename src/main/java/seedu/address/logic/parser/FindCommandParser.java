@@ -46,16 +46,20 @@ public class FindCommandParser implements Parser<FindCommand> {
      * @throws ParseException if the user input does not conform to the expected format
      */
     public FindCommand parse(String args) throws ParseException {
+        assert args != null : "args should not be null";
         String trimmedArgs = args.trim();
+
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
-
+        
         // 1. Check for invalid prefixes (any word ending in / that isn't allowed)
         checkForInvalidPrefixes(trimmedArgs);
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, ALLOWED_PREFIXES);
+        assert argMultimap != null : "Tokenizer should always return a map";
+
         Map<Prefix, List<String>> keywordsMap = new HashMap<>();
 
         // 2. Handle Preamble
@@ -72,6 +76,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         for (Prefix prefix : ALLOWED_PREFIXES) {
             if (argMultimap.getValue(prefix).isPresent()) {
                 List<String> rawValues = argMultimap.getAllValues(prefix);
+                assert !rawValues.isEmpty() : "rawValues cannot be empty if prefix is present";
 
                 for (String val : rawValues) {
                     validateValueByPrefix(prefix, val);
@@ -92,6 +97,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             }
         }
 
+        assert !keywordsMap.isEmpty() : "keywordsMap should contain at least one entry at this point";
         return new FindCommand(new NameContainsKeywordsPredicate(keywordsMap));
     }
 

@@ -53,18 +53,23 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
+        assert person != null : "Person to test cannot be null";
+
         // Returns true if ANY prefix in the map has a keyword that matches the person's corresponding field.
         return keywordsMap.entrySet().stream().anyMatch(entry -> {
             Prefix prefix = entry.getKey();
             List<String> keywords = entry.getValue();
+
+            assert keywords != null && !keywords.isEmpty() : "Keywords list in map should not be null or empty";
+
             String fieldToSearch = getFieldByPrefix(prefix, person);
+            assert fieldToSearch != null : "Field to search extracted from person should not be null";
 
             return keywords.stream().anyMatch(keyword -> {
                 // Exact match for Age to avoid "1" matching "12"
                 if (prefix.equals(PREFIX_AGE)) {
                     return fieldToSearch.equals(keyword);
                 }
-
                 return fieldToSearch.toLowerCase().contains(keyword.toLowerCase());
             });
         });
