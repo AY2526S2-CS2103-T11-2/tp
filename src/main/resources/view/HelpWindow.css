@@ -1,9 +1,14 @@
-#copyButton, #helpMessage {
+.background {
+    -fx-background-color: #eaf3f2;
+    background-color: #eaf3f2;
+}
+
+#copyButton {
     -fx-text-fill: white;
 }
 
 #copyButton {
-    -fx-background-color: dimgray;
+    -fx-background-color: #4aa896;
 }
 
 #copyButton:hover {
@@ -15,7 +20,7 @@
 }
 
 #helpMessageContainer {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: #dfeceb;
     -fx-max-height: 500px;
     -fx-max-width: 500px;
 }
@@ -37,12 +42,13 @@
 
 .help-command {
     -fx-font-family: "Consolas";
-    -fx-background-color: #f4f4f4;
+    -fx-background-color: #eef5f4;
 }
 
 .example-box {
-    -fx-background-color: #D3D3D3;
+    -fx-background-color: #d7e6e4;;
     -fx-font-family: "Consolas";
+    -fx-border-radius: 4;
 }
 
 .nav-panel {
