@@ -61,7 +61,7 @@
 
                 <Label fx:id="deleteSection" text="Delete" styleClass="help-section"/>
                 <Label text="Command:" styleClass="help-subtitle"/>
-                <Label text="delete INDEX [INDEX] [START-END] ..." styleClass="help-command" wrapText="true"/>
+                <Label text="delete INDEX [INDEX]... [START-END]..." styleClass="help-command" wrapText="true"/>
 
                 <Label text="Description:" styleClass="help-subtitle"/>
                 <Label text="Deletes one or more students using their index numbers." wrapText="true"/>
@@ -85,7 +85,7 @@
 
                 <Label fx:id="remarkSection" text="Remark" styleClass="help-section"/>
                 <Label text="Command:" styleClass="help-subtitle"/>
-                <Label wrapText="true" text="remark INDEX r/[REMARK] or d/[DIETARY REMARK] or b/[BEHAVIOR REMARK] or c/[CLASS]" styleClass="help-command"/>
+                <Label wrapText="true" text="remark INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]" styleClass="help-command"/>
 
                 <Label text="Description:" styleClass="help-subtitle"/>
                 <Label wrapText="true" text="Adds or updates remark fields for the student at the specified index." />
@@ -119,8 +119,8 @@
                 <Label text="Notes:" styleClass="help-subtitle"/>
                 <Label text="- If no prefix is given, students are shown in the default order." wrapText="true"/>
                 <Label text="- Only one prefix can be used at a time." wrapText="true"/>
-                <Label text="- Sorting is done in ascending order." wrapText="true"/>
-                <Label text="- Supported prefixes include n/, a/, pn/, pc/, pe/" wrapText="true"/>
+                <Label text="- For the prefix a/, sorting is done in ascending order." wrapText="true"/>
+                <Label text="- For all the other prefixes, sorting is done in alphabetical order." wrapText="true"/>
 
                 <Label text="Examples:" styleClass="help-subtitle"/>
                 <VBox spacing="2" styleClass="example-box">
