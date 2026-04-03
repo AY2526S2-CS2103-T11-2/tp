@@ -64,16 +64,14 @@ public class AddCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        String feedbackToUser = MESSAGE_SUCCESS;
-
         if (model.hasSimilarPerson(toAdd)) {
             model.addSimilarPerson(toAdd);
-            feedbackToUser = MESSAGE_SIMILAR_PERSON + MESSAGE_SUCCESS;
-        } else {
-            model.addPerson(toAdd);
+            return new CommandResult(MESSAGE_SIMILAR_PERSON
+                    + String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
         }
 
-        return new CommandResult(String.format(feedbackToUser, Messages.format(toAdd)));
+        model.addPerson(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
     @Override
