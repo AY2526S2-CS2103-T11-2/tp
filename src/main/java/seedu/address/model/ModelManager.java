@@ -118,6 +118,7 @@ public class ModelManager implements Model {
     public void addSimilarPerson(Person personToAdd) {
         addressBook.addPerson(personToAdd);
         updateFilteredPersonList(person -> person.hasSimilarName(personToAdd));
+        assert getFilteredPersonList() != null : "Model filtered list should not be null after update";
     }
 
     @Override
