@@ -106,7 +106,7 @@
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
-        "ab-3-user-guide": "AB-3 User Guide",
+        "carecontacts-user-guide": "CareContacts User Guide",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
@@ -117,6 +117,7 @@
         "locating-persons-by-name-find": "Locating persons by name: find",
         "deleting-a-student-delete": "Deleting a student : delete",
         "adding-or-removing-a-remark-from-a-student-remark": "Adding or removing a remark from a student : remark",
+        "importing-students-import": "Importing students : import",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
