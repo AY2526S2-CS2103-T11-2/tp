@@ -74,7 +74,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 Shows a message explaining how to access the help page and provides some basic commands for getting started with using CareContacts.
 Note: Not all commands are included in the in-app help guide for the sake of brevity.
 
-![help message](images/helpMessage.png)
+![help message](images/helpWindow.png)
 
 Format: `help`
 
