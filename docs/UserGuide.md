@@ -151,17 +151,21 @@ Format: `find [NAME] [n/NAME] [a/AGE] [ad/ADDRESS] [t/TAG] [pn/PARENT_NAME] [pc/
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * If the keyword follows the prefix, the search returns contacts that match ANY of the given keywords (OR search) if they match the specified parameter for the specific prefix.
 * If no prefix is specified (e.g., n/, a/, pn/, pe/), the search will default to student name (n/).
-* The search matches partial words (e.g., `jacob` will match `jacobyu@email.com`, `Justin` will match `Justinian`)
+* The search matches partial words (e.g., `jacob` will match `jacobyu@email.com`, `Justin` will match `Justinian`) except for the age prefix.
+* Searching by age uses an exact match instead of a partial match (e.g., a/12 will not match a student who is 1).
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 * At least one of the optional fields must be provided.
+* If a prefix is provided, then it must not be empty (e.g., find n/ will result in an error).
 * Use the list command to return to the full list after using find.
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-* `find n/Jacob pn/Madison` returns students whose name contains “Jacob” or whose parent name contains “Madison”
+* `find alex david n/john` returns `Alex Yeoh`, `David Li`, and `John Doe`
+* `find n/Jacob pn/Madison` returns students whose name contains `Jacob` or whose parent name contains `Madison`
   ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find n/Alice pn/Tan a/12` returns all students named `Alice`, or students whose parent's name contains `Tan`, or students who are exactly 12 years old.
 
 ### Deleting a student : `delete`
 
