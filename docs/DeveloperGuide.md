@@ -460,6 +460,20 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Finding a person
+1. Filtering by multiple attributes
+
+    1. Prerequisites: Ensure `Alice Yeoh` (Age 11) and `Benson Meier` (Parent: `Sophia Meier`) are in the list.
+
+    1. Test case: `find Alice pn/Sophia`<br>
+    Expected: Both `Alice` and `Benson` are shown in the list.
+
+    1. Test case: `find a/11`<br>
+    Expected: `Alice` is shown. (Note: `find a/1` should return no results if no one is exactly age 1).
+   
+    1. Test case: `find n/`<br>
+    Expected: No search is performed. Error message for invalid command format is shown.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
