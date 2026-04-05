@@ -58,7 +58,7 @@ CareContacts is a desktop student management application designed specifically f
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Items separated by `|` are mutually exclusive options; you may pick at most one option. 
+* Items separated by `|` are mutually exclusive options; you may pick at most one option.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -83,7 +83,7 @@ Format: `help`
 
 Adds a student to the address book.
 
-Format: `add n/STUDENT_NAME a/AGE ad/ADDRESS pn/PARENT_NAME pc/PARENT_PHONE pe/PARENT_EMAIL [t/TAG]…​`
+Format: `add n/STUDENT_NAME a/AGE ad/ADDRESS pn/PARENT_NAME pc/PARENT_PHONE pe/PARENT_EMAIL [t/TAG]...`
 
 <box type="tip" seamless>
 
@@ -128,7 +128,7 @@ Format: `list  [n/] | [a/] | [pn/] | [pc/] | [pe/]`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [a/AGE] [ad/ADDRESS] [pn/PARENT NAME] [pc/PARENT PHONE] [pe/PARENT EMAIL] [t/TAG]...…​`
+Format: `edit INDEX [n/NAME] [a/AGE] [ad/ADDRESS] [pn/PARENT NAME] [pc/PARENT PHONE] [pe/PARENT EMAIL] [t/TAG]...`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -167,7 +167,7 @@ Examples:
 
 Deletes the specified student from the address book.
 
-Format: `delete INDEX [INDEX]…​ [START-END]…​`
+Format: `delete INDEX [INDEX]... [START-END]...`
 
 * Deletes the students at the specified `INDEX` or in the specified range `START-END`.
 * The index refers to the index number shown in the displayed person list.
@@ -184,7 +184,7 @@ Examples:
 
 Adds a remark to the specified student from CareContacts.
 
-Format: `INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]`
+Format: `remark INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]`
 
 * Adds a remark to a student at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -194,7 +194,7 @@ Format: `INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]`
 * To delete a remark, use the prefix with no value (e.g. remark 1 r/).
 
 Examples:
-* `remark 1 d/` removes the dietary remark from the student at index 1 
+* `remark 1 d/` removes the dietary remark from the student at index 1
 * `remark 1 r/enjoys sports d/allergic to shellfish c/1C b/very energetic`
 adds the following remarks to the student at index 1
 
@@ -285,12 +285,13 @@ _Details coming soon ..._
 ## Command summary
 
 Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Import** | `import FILE_PATH`<br> e.g., `import data/contacts.csv`
-**List**   | `list`
+-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Help**   | `help`
+**Add**    | `add n/STUDENT_NAME a/AGE ad/ADDRESS pn/PARENT_NAME pc/PARENT_PHONE pe/PARENT_EMAIL [t/TAG]...` <br> e.g., `add n/James Ho a/12 ad/Kent Ridge Street pn/Bryan Ho pc/98765432 pe/bryan@example.com t/student`
+**List**   | `list [n/] \| [a/] \| [pn/] \| [pc/] \| [pe/]` <br> e.g., `list a/`
+**Edit**   | `edit INDEX [n/NAME] [a/AGE] [ad/ADDRESS] [pn/PARENT NAME] [pc/PARENT PHONE] [pe/PARENT EMAIL] [t/TAG]...`<br> e.g.,`edit 2 pn/James Lee pe/jameslee@example.com`
+**Find**   | `find [NAME] [n/NAME] [a/AGE] [ad/ADDRESS] [t/TAG] [pn/PARENT_NAME] [pc/PARENT_PHONE] [pe/PARENT_EMAIL] [d/DIETARY] [c/CLASS] [b/BEHAVIOR]`<br> e.g., `find James pn/Jake`
+**Delete** | `delete INDEX [INDEX]... [START-END]...`<br> e.g., `delete 1 2 4-6`
+**Remark** | `remark INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]` <br> e.g., `remark 3 c/4A d/Allergic to seafood`
+**Import** | `import FILE_PATH`<br> e.g., `import data/contacts.csv`
+**Clear**  | `clear`
