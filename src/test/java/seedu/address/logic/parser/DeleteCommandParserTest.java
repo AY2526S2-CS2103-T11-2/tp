@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX_RANGE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
@@ -76,12 +77,10 @@ public class DeleteCommandParserTest {
                 DeleteCommand.MESSAGE_USAGE));
 
         // Invalid range format (too many hyphens)
-        assertParseFailure(parser, "1-2-3", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "1-2-3", MESSAGE_INVALID_INDEX_RANGE);
 
         // Invalid range (start index > end index)
-        assertParseFailure(parser, "3-1", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "3-1", MESSAGE_INVALID_INDEX_RANGE);
 
         // Out of range index
         assertParseFailure(parser, "0", String.format(MESSAGE_INVALID_COMMAND_FORMAT,

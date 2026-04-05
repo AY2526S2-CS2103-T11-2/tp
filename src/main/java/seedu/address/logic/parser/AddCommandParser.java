@@ -10,8 +10,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
@@ -31,6 +33,8 @@ import seedu.address.model.tag.Tag;
  */
 public class AddCommandParser implements Parser<AddCommand> {
 
+    private static final Logger logger = LogsCenter.getLogger(AddCommandParser.class);
+
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
@@ -38,6 +42,8 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
+        logger.fine("Parsing AddCommand with arguments: " + args);
+
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
                 PREFIX_NAME, PREFIX_AGE, PREFIX_ADDRESS,
                 PREFIX_PARENT_NAME, PREFIX_PARENT_PHONE, PREFIX_PARENT_EMAIL, PREFIX_TAG);
@@ -50,6 +56,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_AGE, PREFIX_ADDRESS,
                 PREFIX_PARENT_NAME, PREFIX_PARENT_PHONE, PREFIX_PARENT_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
+            logger.warning("Missing required prefixes or non-empty preamble in AddCommand. "
+                    + "User input: " + args);
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 

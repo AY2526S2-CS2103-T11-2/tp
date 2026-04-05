@@ -32,8 +32,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             List<Index> indices = ParserUtil.parseIndices(trimmedArgs);
             return new DeleteCommand(indices);
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
+            throw pe;
         }
     }
 }

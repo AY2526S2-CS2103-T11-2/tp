@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
@@ -30,6 +32,14 @@ public class ParserUtil {
     public static final String RANGE_SEPARATOR = "-";
     public static final String WHITESPACE_REGEX = "\\s+";
 
+    private static final int RANGE_PARTS_COUNT = 2;
+    private static final int START_INDEX_POSITION = 0;
+    private static final int END_INDEX_POSITION = 1;
+    private static final int MAX_DELETION_CAPACITY = 1000;
+    private static final String MESSAGE_MAX_DELETION_CAPACITY_EXCEEDED =
+            "Range too large. Please specify a range of at most "
+                    + MAX_DELETION_CAPACITY + " indices.";
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -38,7 +48,8 @@ public class ParserUtil {
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    DeleteCommand.MESSAGE_USAGE));
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
@@ -53,15 +64,20 @@ public class ParserUtil {
     public static List<Index> parseRange(String rangePart) throws ParseException {
         String[] rangeValues = rangePart.split(RANGE_SEPARATOR);
 
-        if (rangeValues.length != 2) {
+        if (rangeValues.length != RANGE_PARTS_COUNT) {
             throw new ParseException(MESSAGE_INVALID_INDEX_RANGE);
         }
 
-        Index start = ParserUtil.parseIndex(rangeValues[0]);
-        Index end = ParserUtil.parseIndex(rangeValues[1]);
+        Index start = ParserUtil.parseIndex(rangeValues[START_INDEX_POSITION]);
+        Index end = ParserUtil.parseIndex(rangeValues[END_INDEX_POSITION]);
 
         if (start.getZeroBased() > end.getZeroBased()) {
             throw new ParseException(MESSAGE_INVALID_INDEX_RANGE);
+        }
+
+        int numPersonsToDelete = end.getZeroBased() - start.getZeroBased() + 1;
+        if (numPersonsToDelete > MAX_DELETION_CAPACITY) {
+            throw new ParseException(MESSAGE_MAX_DELETION_CAPACITY_EXCEEDED);
         }
 
         List<Index> rangeIndices = new ArrayList<>();

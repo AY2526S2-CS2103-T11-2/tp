@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -13,6 +13,7 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
@@ -39,12 +40,6 @@ public class ParserUtilTest {
 
     private static final String WHITESPACE = " \t\r\n";
 
-    // Constants for range/multiple indices tests
-    private static final String VALID_RANGE = "1-3";
-    private static final String INVALID_RANGE_FORMAT = "1-2-3";
-    private static final String INVALID_RANGE_ORDER = "3-1";
-    private static final String VALID_INDICES_MIXED = "1 3-5 7";
-
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseIndex("10 a"));
@@ -52,8 +47,9 @@ public class ParserUtilTest {
 
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
-            -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
+        assertThrows(ParseException.class,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), ()
+                        -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 
     @Test
