@@ -461,6 +461,7 @@ testers are expected to do more *exploratory* testing.
 1. _{ more test cases …​ }_
 
 ### Finding a person
+
 1. Filtering by multiple attributes
 
     1. Prerequisites: Ensure `Alice Yeoh` (Age 11) and `Benson Meier` (Parent: `Sophia Meier`) are in the list.
