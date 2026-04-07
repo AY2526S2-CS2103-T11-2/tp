@@ -467,7 +467,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: Ensure `Alice Yeoh` (Age 11) and `Benson Meier` (Parent: `Sophia Meier`) are in the list.
 
     1. Test case: `find Alice pn/Sophia`<br>
-    Expected: Both `Alice` and `Benson` are shown in the list.
+    Expected: Both `Alice Yeoh` and `Benson Meier` are shown in the list.
 
     1. Test case: `find a/11`<br>
     Expected: `Alice` is shown. (Note: `find a/1` should return no results if no one is exactly age 1).
