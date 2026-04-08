@@ -28,7 +28,7 @@ activate ImportCommandParser
 ImportCommandParser --> AddressBookParser
 deactivate ImportCommandParser
 
-AddressBookParser -> ImportCommandParser : parse("sample.csv")
+AddressBookParser -> ImportCommandParser : parse("data/sample.csv")
 activate ImportCommandParser
 
 create ImportCommand
@@ -56,7 +56,7 @@ deactivate AddressBookParser
 LogicManager -> ImportCommand : execute(m)
 activate ImportCommand
 
-ImportCommand -> CsvPersonImporter : read("sample.csv")
+ImportCommand -> CsvPersonImporter : read("data/sample.csv")
 activate CsvPersonImporter
 
 CsvPersonImporter --> ImportCommand : List<Person>
