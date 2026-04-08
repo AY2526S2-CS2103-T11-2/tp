@@ -569,6 +569,49 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `find n/`<br>
     Expected: No search is performed. Error message for invalid command format is shown.
 
+### Adding or removing remarks
+
+1. Adding a general remark
+
+   1. Prerequisites: List all persons using the `list` command. Ensure there is at least one person.
+
+   1. Test case: `remark 1 r/Needs extra attention`<br>
+      Expected: Person at index 1 is updated with the new remark. A success message is shown.
+
+1. Adding multiple remark fields in one command
+
+   1. Prerequisites: List all persons using the `list` command.
+
+   1. Test case: `remark 1 r/enjoys sports d/allergic to shellfish c/1C b/very energetic`<br>
+      Expected: Person at index 1 has all specified fields updated. A success message is shown.
+
+1. Removing an existing remark field
+
+   1. Prerequisites: Ensure person at index 1 already has a dietary remark.
+
+   1. Test case: `remark 1 d/`<br>
+      Expected: Dietary remark for person at index 1 is removed. A success message is shown.
+
+1. Attempting to remove an already empty field
+
+   1. Prerequisites: Ensure person at index 1 has an empty remark field.
+
+   1. Test case: `remark 1 r/`<br>
+      Expected: No changes are made. Error message indicates the remark is already empty.
+
+1. Invalid command format (no remark prefixes)
+
+   1. Test case: `remark 1`<br>
+      Expected: No changes are made. Error message for invalid command format is shown.
+
+1. Invalid index
+
+   1. Test case: `remark 0 r/test`<br>
+      Expected: No changes are made. Error message for invalid command format is shown.
+
+   1. Test case: `remark 999 r/test` (where 999 is out of range)<br>
+      Expected: No changes are made. Error message indicates invalid person index.
+
 ### Importing a CSV file
 
 1. Importing a valid CSV file
@@ -580,9 +623,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Importing a file path that contains spaces
 
-   1. Prerequisites: Place a CSV file at `data/my contacts.csv`.
+   1. Prerequisites: Place a CSV file at `data/my-contacts.csv`.
 
-   1. Test case: `import "data/my contacts.csv"`<br>
+   1. Test case: `import "data/my-contacts.csv"`<br>
       Expected: Import succeeds and displays the summary message.
 
 1. Importing duplicates
