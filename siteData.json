@@ -63,6 +63,7 @@
         "launch-and-shutdown": "Launch and shutdown",
         "deleting-a-person": "Deleting a person",
         "finding-a-person": "Finding a person",
+        "listing-contacts": "Listing contacts",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
