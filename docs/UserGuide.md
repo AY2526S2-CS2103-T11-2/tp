@@ -71,8 +71,15 @@ CareContacts is a desktop student management application designed specifically f
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page and provides some basic commands for getting started with using CareContacts.
-Note: Not all commands are included in the in-app help guide for the sake of brevity.
+Shows a help window with a small set of essential commands to help new users get started quickly.
+
+⚠️ Important:
+
+This help window is not a complete reference of all available commands.
+Some commands (e.g., edit, import, etc.) are not included.
+For the full list of features and commands, refer to the User Guide.
+
+Format: help
 
 ![help message](images/helpWindow.png)
 

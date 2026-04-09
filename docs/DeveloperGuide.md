@@ -448,7 +448,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  CareContacts displays information on the available commands, parameters and formats.
 
 
-
     Use case ends.
 
 **Use case: UC5 - Import students from a CSV file**
