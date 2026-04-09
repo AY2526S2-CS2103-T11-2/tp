@@ -119,8 +119,8 @@
                 <Label text="Notes:" styleClass="help-subtitle"/>
                 <Label text="- If no prefix is given, students are shown in the default order." wrapText="true"/>
                 <Label text="- Only one prefix can be used at a time." wrapText="true"/>
-                <Label text="- For the prefix a/, sorting is done in ascending order." wrapText="true"/>
-                <Label text="- For all the other prefixes, sorting is done in alphabetical order." wrapText="true"/>
+                <Label text="- Alphabetical sort is applied to `n/`, `pn/` and `pe/`." wrapText="true"/>
+                <Label text="- Numeric sort in ascending order is applied to `a/` and `pc/`" wrapText="true"/>
 
                 <Label text="Examples:" styleClass="help-subtitle"/>
                 <VBox spacing="2" styleClass="example-box">
