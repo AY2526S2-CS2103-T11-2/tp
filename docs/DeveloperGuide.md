@@ -743,6 +743,17 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Test Case: Missing file
+      1. Exit the application
+      2. Delete `data/addressbook.json`
+      3. Relaunch the application
+      Expected: The application displays sample student entries. The file `data/addressbook.json` is automatically created if the user runs a command that modifies the data (e.g. `add` or `edit`). 
+    
+   1. Test Case: Corrupted `data/addressbook.json` file
+      1. Exit the application
+      2. Open the `data/addressbook.json` file
+      3. Modify the file to contain invalid JSON (e.g., malformed structure).
+      4. Save the `data/addressbook.json` file
+      5. Relaunch the application
+      Expected:The application launches successfully despite the corrupted file. The data is not loaded, resulting in an empty list of entries, and an error is logged.
 
-1. _{ more test cases …​ }
