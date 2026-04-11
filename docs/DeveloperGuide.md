@@ -752,8 +752,7 @@ testers are expected to do more *exploratory* testing.
    1. Test Case: Corrupted `data/addressbook.json` file
       1. Exit the application
       2. Open the `data/addressbook.json` file
-      3. Modify the file to contain invalid JSON (e.g., malformed structure).
+      3. Introduce invalid JSON or values
       4. Save the `data/addressbook.json` file
       5. Relaunch the application
-      Expected:The application launches successfully despite the corrupted file. The data is not loaded, resulting in an empty list of entries, and an error is logged.
-
+      Expected: The application successfully launches, but does not display any entries. An error is 
