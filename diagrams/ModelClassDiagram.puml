@@ -44,11 +44,11 @@ Person *--> Address
 Person *--> Age
 Person *--> Remark
 Person *--> DietaryRemark
-DietaryRemark .up.|> Remark
+DietaryRemark -up-|> Remark
 Person *--> ClassRemark
-ClassRemark .up.|> Remark
+ClassRemark -up-|> Remark
 Person *--> BehaviorRemark
-BehaviorRemark .up.|> Remark
+BehaviorRemark -up-|> Remark
 Person *--> "*" Tag
 
 Person -[hidden]up--> I

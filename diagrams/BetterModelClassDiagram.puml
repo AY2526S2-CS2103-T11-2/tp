@@ -18,4 +18,11 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> Remark
+Person *--> DietaryRemark
+DietaryRemark -up-|> Remark
+Person *--> ClassRemark
+ClassRemark -up-|> Remark
+Person *--> BehaviorRemark
+BehaviorRemark -up-|> Remark
 @enduml
