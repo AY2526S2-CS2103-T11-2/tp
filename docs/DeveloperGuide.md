@@ -583,7 +583,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: No students with the same normalized name (case-insensitive, ignoring extra spaces) as "John Doe" exist in CareContacts.
    1. Test case: `add n/John Doe a/12 ad/311, Clementi Ave 2, #02-25 pn/Jane Doe pc/87516234 pe/janed@example.com t/friends t/basketball`
-      Expected: The student is added to the list. Details of the added student are shown in the status message. Timestamp in the status bar is updated.
+      Expected: The student is added to the list. Details of the added student are shown in the status message.
 
 1. Adding a student whose normalized name already exists in CareContacts
 
@@ -591,7 +591,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add n/alex  yeoh a/11 ad/289, Jurong West St 41, #03-12 pn/John Yeoh pc/91234567 pe/john.yeoh@example.com t/choir`
       Expected: A message warning the user of a possible duplicate is shown.
       Students with the same normalized name (case-insensitive, ignoring extra spaces), including the newly added student, are listed.
-      The student is still added to CareContacts. Details of the added student are shown in the status message. Timestamp in the status bar is updated.
+      The student is still added to CareContacts. Details of the added student are shown in the status message.
 
 ### Editing a student's details
 
@@ -599,7 +599,7 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `edit 1 pc/12345678`
        Expected: The student at index 1's details are updated in the list to show the new parent contact details.
-       Details of the edited student are shown in the status message. Timestamp in the status bar is updated.
+       Details of the edited student are shown in the status message.
 
 1. Editing a student whose normalized name already exists in CareContacts
 
@@ -608,7 +608,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `edit 1 n/alex      yeoh`
        Expected: A message warning the user of a possible duplicate is shown.
        Students with the same normalized name (case-insensitive, ignoring extra spaces), including the newly added student, are listed.
-       The student name is still edited to CareContacts. Details of the edited student are shown in the status message. Timestamp in the status bar is updated.
+       The student name is still edited to CareContacts. Details of the edited student are shown in the status message.
 
       
 ### Deleting a student
@@ -618,16 +618,15 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all students using the `list` command. Multiple persons in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First student is deleted from the list. Details of the deleted student are shown in the status message. Timestamp in the status bar is updated.
+      Expected: First student is deleted from the list. Details of the deleted student are shown in the status message.
 
    1. Test case: `delete 1 2 1 3`<br>
-      Expected: Duplicated indices are handled (no duplicate deletions). The first, second, and third unique contacts are deleted from the list. Details of the deleted students are shown in the status message. Timestamp in the status bar is updated.
-
+      Expected: Duplicated indices are handled (no duplicate deletions). The first, second, and third unique contacts are deleted from the list. Details of the deleted students are shown in the status message.
    1. Test case: `delete 1-3`<br>
-      Expected: The first to third student in the list (inclusive) are deleted. Details of the deleted students are shown in the status message. Timestamp in the status bar is updated.
+      Expected: The first to third student in the list (inclusive) are deleted. Details of the deleted students are shown in the status message.
 
    1. Test case: `delete 0`<br>
-      Expected: No student is deleted. Error details are shown in the status message. Status bar remains the same.
+      Expected: No student is deleted. Error details are shown in the status message.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
