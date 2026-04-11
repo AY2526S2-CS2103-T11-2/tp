@@ -85,7 +85,7 @@
 
                 <Label fx:id="remarkSection" text="Remark" styleClass="help-section"/>
                 <Label text="Command:" styleClass="help-subtitle"/>
-                <Label wrapText="true" text="remark INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]" styleClass="help-command"/>
+                <Label wrapText="true" text="remark INDEX [r/REMARK] [d/DIETARY REMARK] [b/BEHAVIOR REMARK] [c/CLASS]" styleClass="help-command"/>
 
                 <Label text="Description:" styleClass="help-subtitle"/>
                 <Label wrapText="true" text="Adds or updates remark fields for the student at the specified index." />

@@ -196,7 +196,7 @@ Examples:
 
 Adds a remark to the specified student from CareContacts.
 
-Format: `remark INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]`
+Format: `remark INDEX [r/REMARK] [d/DIETARY REMARK] [b/BEHAVIOR REMARK] [c/CLASS]`
 
 * Adds a remark to a student at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -305,7 +305,7 @@ Action     | Format, Examples
 **Edit**   | `edit INDEX [n/NAME] [a/AGE] [ad/ADDRESS] [pn/PARENT NAME] [pc/PARENT PHONE] [pe/PARENT EMAIL] [t/TAG]...`<br> e.g.,`edit 2 pn/James Lee pe/jameslee@example.com`
 **Find**   | `find [NAME] [n/NAME] [a/AGE] [ad/ADDRESS] [t/TAG] [pn/PARENT_NAME] [pc/PARENT_PHONE] [pe/PARENT_EMAIL] [d/DIETARY] [c/CLASS] [b/BEHAVIOR]`<br> e.g., `find James pn/Jake`
 **Delete** | `delete INDEX [INDEX]... [START-END]...`<br> e.g., `delete 1 2 4-6`
-**Remark** | `remark INDEX r/[REMARK] d/[DIETARY REMARK] b/[BEHAVIOR REMARK] c/[CLASS]` <br> e.g., `remark 3 c/4A d/Allergic to seafood`
+**Remark** | `remark INDEX [r/REMARK] [d/DIETARY REMARK] [b/BEHAVIOR REMARK] [c/CLASS]` <br> e.g., `remark 3 c/4A d/Allergic to seafood`
 **Import** | `import FILE_PATH`<br> e.g., `import data/contacts.csv`
 **Clear**  | `clear`
 **Exit**   | `exit`
