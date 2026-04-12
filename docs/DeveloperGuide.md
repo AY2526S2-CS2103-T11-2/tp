@@ -658,10 +658,10 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: Ensure `Alice Yeoh` (Age 11), `Bernice Yu` (Age 10) and `Charlotte Oliveiro` (Age 7) are saved as contacts.
 
     1. Test case: `list n/`<br>
-    Expected: Contacts are displayed in the following order (from top to bottom): `Alex Yeoh`, `Bernice Yu`, `Charlotte Oliveiro`.
+    Expected: Contacts are displayed in the following order (from top to bottom): `Alice Yeoh`, `Bernice Yu`, `Charlotte Oliveiro`.
 
     1. Test case: `list a/`<br>
-    Expected: Contacts are displayed in the following order (from top to bottom): `Charlotte Oliveiro`, `Bernice Yu`, `Alex Yeoh`.
+    Expected: Contacts are displayed in the following order (from top to bottom): `Charlotte Oliveiro`, `Bernice Yu`, `Alice Yeoh`.
 
     1. Test case: `list` with any number of trailing whitespaces<br>
     Expected: Contacts are displayed with no sorting order applied.
