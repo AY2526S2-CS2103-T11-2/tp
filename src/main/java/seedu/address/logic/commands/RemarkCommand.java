@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_BEHAVIOR_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLASS_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIETARY_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +99,6 @@ public class RemarkCommand extends Command {
                 updatedRemark, updatedDietaryRemark, updatedClassRemark, updatedBehaviorRemark);
 
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(generateSuccessMessage(editedPerson));
     }

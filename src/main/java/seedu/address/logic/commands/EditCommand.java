@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -105,8 +104,6 @@ public class EditCommand extends Command {
             feedbackToUser = MESSAGE_EDIT_PERSON_WARNING + feedbackToUser;
             model.updateFilteredPersonList(person -> person.hasSimilarName(editedPerson));
             assert model.getFilteredPersonList() != null : "Model filtered list should not be null after update";
-        } else {
-            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         }
 
         return new CommandResult(feedbackToUser);
