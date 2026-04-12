@@ -33,10 +33,10 @@
       <Label fx:id="parentName" styleClass="cell_small_label" text="\$parentName" />
       <Label fx:id="parentPhone" styleClass="cell_small_label" text="\$parentPhone" />
       <Label fx:id="parentEmail" styleClass="cell_small_label" text="\$parentEmail" />
-      <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
-      <Label fx:id="dietaryRemark" styleClass="cell_small_label" text="\$dietaryRemark" />
-      <Label fx:id="classRemark" styleClass="cell_small_label" text="\$classRemark" />
-      <Label fx:id="behaviorRemark" styleClass="cell_small_label" text="\$behaviorRemark" />
+      <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" wrapText="true" maxWidth="1.7976931348623157E308" />
+      <Label fx:id="dietaryRemark" styleClass="cell_small_label" text="\$dietaryRemark" wrapText="true" maxWidth="1.7976931348623157E308" />
+      <Label fx:id="classRemark" styleClass="cell_small_label" text="\$classRemark" wrapText="true" maxWidth="1.7976931348623157E308" />
+      <Label fx:id="behaviorRemark" styleClass="cell_small_label" text="\$behaviorRemark" wrapText="true" maxWidth="1.7976931348623157E308" />
     </VBox>
   </GridPane>
 </HBox>
