@@ -439,11 +439,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. CareContacts detects a duplicate student name.
+* 1b. CareContacts detects a duplicate student.
 
     * 1b1. CareContacts displays an error message.
 
       Use case ends.
+
+* 1b. CareContacts detects a possible duplicate student.
+
+    * 1b1. CareContacts displays a warning message and shows possible duplicates.
+
+      Use case resumes from step 2.
 
 **Use case: UC2 - Delete a student**
 
