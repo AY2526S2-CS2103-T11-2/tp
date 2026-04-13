@@ -71,6 +71,7 @@ Optimized for a Command Line Interface (CLI), CareContacts is ideal for fast typ
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
 </box>
 
 <div style="page-break-after: always;"></div>
@@ -106,7 +107,7 @@ Examples:
 * `add n/James Cook a/12 ad/Blk 132 Edgedale Plains, #15-96 pn/Madison Cook pc/87654321 pe/maddie@gmail.com`
 * `add n/Mary Chew a/7 ad/Blk 123 Bukit Merah Lane, #12-23 pn/Augusta Chew pc/12345678 pe/augusta@email.com t/allergies t/basketball`
 
-<div markdown="block" class="alert alert-info">
+<box type="info" seamless>
 
 ### Duplicate Name Detection
 
@@ -135,7 +136,7 @@ Examples that will **NOT** trigger a warning:
 - `Justine Ong` vs `Justin Ong`
 - `Annabelle` vs `Anna Belle`
 
-</div>
+</box>
 
 <div style="page-break-after: always;"></div>
 
@@ -312,13 +313,13 @@ Refer to [Importing students : `import`](#importing-students) for the required C
 
 CareContacts data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<div style="page-break-after: always;"></div>
 
 <box type="warning" seamless>
 
 **Caution:**
 If your changes to the data file makes its format invalid, CareContacts will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the CareContacts to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
