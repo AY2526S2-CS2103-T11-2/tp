@@ -813,5 +813,3 @@ Currently, the remark field accepts an unlimited number of characters, and long 
 This can clutter the interface and make it difficult for users to quickly scan and navigate through contacts.
 We plan to improve the display of remarks by constraining them within a fixed-size area and introducing a scrollbar for longer content.
 Additionally, long remarks may be truncated in the list view with an ellipsis (...), while still allowing users to access the full content when needed.
-
-### 4. 
