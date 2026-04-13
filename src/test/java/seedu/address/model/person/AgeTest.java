@@ -17,7 +17,7 @@ public class AgeTest {
 
     @Test
     public void constructor_moreThan3Digits_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new Age("1000"));
+        assertThrows(IllegalArgumentException.class, () -> new Age("100"));
     }
 
     @Test
@@ -32,10 +32,9 @@ public class AgeTest {
 
     @Test
     public void constructor_validAge_success() {
-
         assertEquals("1", new Age("1").value);
         assertEquals("25", new Age("25").value);
-        assertEquals("999", new Age("999").value);
+        assertEquals("99", new Age("99").value);
     }
 
 
@@ -59,15 +58,15 @@ public class AgeTest {
         assertTrue(Age.isValidAge("1"));
         assertTrue(Age.isValidAge("0"));
         assertTrue(Age.isValidAge("99"));
-        assertTrue(Age.isValidAge("100"));
-        assertTrue(Age.isValidAge("999"));
+        assertTrue(Age.isValidAge("10"));
+        assertTrue(Age.isValidAge("9"));
     }
 
     @Test
     public void toString_returnsValue() {
         assertEquals("12", new Age("12").toString());
-        assertEquals("5", new Age("5").toString());
-        assertEquals("100", new Age("100").toString());
+        assertEquals("1", new Age("1").toString());
+        assertEquals("99", new Age("99").toString());
     }
 
     @Test

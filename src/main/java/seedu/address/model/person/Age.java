@@ -13,8 +13,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Age {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Age must be a nonnegative number at least 1 digit long and no more than 3 digits long (0-999)";
-    public static final String VALIDATION_REGEX = "\\d{1,3}";
+            "Age must be a nonnegative number at least 1 digit long and no more than 2 digits long (0-99)";
+    public static final String VALIDATION_REGEX = "\\d{1,2}";
     public final String value;
 
     /**
