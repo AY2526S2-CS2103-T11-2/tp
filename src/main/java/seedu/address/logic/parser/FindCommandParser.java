@@ -125,7 +125,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         } else if (prefix.equals(PREFIX_ADDRESS)) {
             ParserUtil.parseAddress(value);
         } else if (prefix.equals(PREFIX_PARENT_PHONE)) {
-            ParserUtil.parsePhone(value);
+            if (!value.matches("\\d+")) {
+                throw new ParseException("Phone numbers should only contain digits.");
+            }
         } else if (prefix.equals(PREFIX_PARENT_EMAIL)) {
             ParserUtil.parseEmail(value);
         } else if (prefix.equals(PREFIX_TAG)) {

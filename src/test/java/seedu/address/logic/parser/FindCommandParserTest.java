@@ -50,6 +50,12 @@ public class FindCommandParserTest {
         duplicatePrefixMap.put(PREFIX_NAME, Arrays.asList("Alice", "Bob"));
         assertParseSuccess(parser, " n/Alice n/Bob", new FindCommand(
                 new NameContainsKeywordsPredicate(duplicatePrefixMap)));
+
+        // 3. Short Phone Number
+        Map<Prefix, List<String>> phoneMap = new HashMap<>();
+        phoneMap.put(PREFIX_PARENT_PHONE, Arrays.asList("91"));
+        assertParseSuccess(parser, " pc/91", new FindCommand(
+                new NameContainsKeywordsPredicate(phoneMap)));
     }
 
     @Test
@@ -98,7 +104,7 @@ public class FindCommandParserTest {
     public void parse_invalidValue_throwsParseException() {
         // 1. Invalid format for specific types
         assertParseFailure(parser, " a/notAnAge", Age.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, " pc/notAPhone", seedu.address.model.person.Phone.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " pc/notAPhone", "Phone numbers should only contain digits.");
 
         // 2. Empty values (after the prefix)
         assertParseFailure(parser, " n/ ", Name.MESSAGE_CONSTRAINTS);
