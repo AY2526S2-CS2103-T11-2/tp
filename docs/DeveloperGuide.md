@@ -6,7 +6,10 @@
 
 # CareContacts Developer Guide
 
-<!-- * Table of Contents -->
+
+* Table of Contents
+  {:toc}
+
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
