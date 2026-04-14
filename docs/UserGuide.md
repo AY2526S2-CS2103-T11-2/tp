@@ -244,7 +244,6 @@ Examples:
 adds the following remarks to the student at index 1
 
 <div style="page-break-after: always;"></div>
-<a id="importing-students"></a>
 
 ### Importing students : `import`
 
@@ -305,7 +304,7 @@ Use the `import` command to load students from a CSV file:
 
 * `import data/contacts.csv`
 
-Refer to [Importing students : `import`](#importing-students) for the required CSV format.
+Refer to [Importing students : `import`](#importing-students-import) for the required CSV format.
 
 <div style="page-break-after: always;"></div>
 
