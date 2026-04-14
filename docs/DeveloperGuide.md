@@ -1,6 +1,6 @@
 ---
-  layout: default.md
-  title: "Developer Guide"
+layout: default.md
+title: "Developer Guide"
 ---
 
 * Table of Contents
