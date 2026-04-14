@@ -829,3 +829,13 @@ The current alphanumeric-only restriction limits users
 from using common naming conventions (e.g., `primary-school` or `health_issue`). 
 Future updates will allow for a wider range of special characters, 
 enabling more intuitive and readable tags for Student Care Supervisors.
+
+### 6. Support exact-phrase matching in find command:
+Currently, the find command treats multi-word inputs as separate keyword tokens, 
+which can return broader matches than intended. 
+For example, running `find ad/Blk 123 Geylang Street` returns students whose addresses contain any of the words 
+`Blk`, `123`, `Geylang`, 
+or `Street`, rather than the full phrase. 
+We plan to enhance the find command to support quoted exact-phrase matching, 
+such that inputs enclosed in quotation marks are matched as a contiguous phrase. 
+The existing keyword-based search behaviour will be retained for unquoted inputs.
