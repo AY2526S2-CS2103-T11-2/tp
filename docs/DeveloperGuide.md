@@ -794,28 +794,20 @@ While AB3 provided a foundation, the number of structural changes across the mod
 
 Team Size: 4
 
-### 1. Allow common real-world characters in names
-Currently, the application disallows several commonly used characters in real-world names, 
-including `/`, `-`, `'`, `.`, and non-English characters (e.g., accents). 
-This prevents users from entering valid names such as `Ahmad s/o Rahman`, `Jean-Pierre`, `O'Connor`, 
-`J.R.R. Tolkien`, and `Lê Dũng Tráng`. 
-We plan to update the name validation and parsing logic to support these characters 
-while ensuring they do not conflict with command parsing.
-
-### 2. Provide more specific error message for invalid delete index
+### 1. Provide more specific error message for invalid delete index
 Currently, entering an invalid index for index-based commands (e.g., delete -1 or delete 0) results in a generic "Invalid Command Format" message.
 This does not clearly inform the user what went wrong or how to correct their input.
 We plan to improve the error handling by providing a more specific message, such as:
 * Non-positive indices: "Index must be a positive integer (1, 2, 3...)."
 * Out-of-bounds indices: "The index provided is larger than the number of contacts currently displayed."
 
-### 3. Improve remark display for better readability
+### 2. Improve remark display for better readability
 Currently, the remark field accepts an unlimited number of characters, and long remarks are fully displayed in the contact list.
 This can clutter the interface and make it difficult for users to quickly scan and navigate through contacts.
 We plan to improve the display of remarks by constraining them within a fixed-size area and introducing a scrollbar for longer content.
 Additionally, long remarks may be truncated in the list view with an ellipsis (...), while still allowing users to access the full content when needed.
 
-### 4. Relaxing Input Validation for Phone Numbers
+### 3. Relaxing Input Validation for Phone Numbers
 Currently, the application enforces a strict numeric-only format for phone numbers 
 (e.g., rejecting any input containing spaces, brackets, symbols, or text). 
 We plan to relax this "overzealous" validation to allow for more flexible data entry. 
@@ -824,7 +816,7 @@ such as labelling numbers (e.g., `91234567 (HP)`, `67891234 (Office)`).
 The system will shift from blocking non-compliant inputs to warning the user, 
 ensuring the software remains flexible for various use cases.
 
-### 5. Enhanced Tagging Flexibility
+### 4. Enhanced Tagging Flexibility
 To better support diverse student categorization needs, 
 we plan to expand the allowed character set for tags. 
 The current alphanumeric-only restriction limits users 
@@ -832,7 +824,7 @@ from using common naming conventions (e.g., `primary-school` or `health_issue`).
 Future updates will allow for a wider range of special characters, 
 enabling more intuitive and readable tags for Student Care Supervisors.
 
-### 6. Support exact-phrase matching in find command
+### 5. Support exact-phrase matching in find command
 Currently, the find command treats multi-word inputs as separate keyword tokens, 
 which can return broader matches than intended. 
 For example, running `find ad/Blk 123 Geylang Street` returns students whose addresses contain any of the words 
