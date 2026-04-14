@@ -62,6 +62,9 @@ public class ParserUtil {
      * @throws ParseException if the format is invalid or start index is greater than end index.
      */
     public static List<Index> parseRange(String rangePart) throws ParseException {
+        //GitHub Copilot was used as a debugging aid during the development of this method.
+        // It assisted in highlighting possible edge cases and refining exception handling logic.
+        // The final implementation reflects independent verification and modifications by the author.
         String[] rangeValues = rangePart.split(RANGE_SEPARATOR);
 
         if (rangeValues.length != RANGE_PARTS_COUNT) {
