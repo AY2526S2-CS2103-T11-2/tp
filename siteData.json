@@ -73,12 +73,11 @@
         "saving-data": "Saving data",
         "appendix-effort": "Appendix: Effort",
         "appendix-planned-enhancements": "Appendix: Planned Enhancements",
-        "1-allow-common-real-world-characters-in-names": "1. Allow common real-world characters in names",
-        "2-provide-more-specific-error-message-for-invalid-delete-index": "2. Provide more specific error message for invalid delete index",
-        "3-improve-remark-display-for-better-readability": "3. Improve remark display for better readability",
-        "4-relaxing-input-validation-for-phone-numbers": "4. Relaxing Input Validation for Phone Numbers",
-        "5-enhanced-tagging-flexibility": "5. Enhanced Tagging Flexibility",
-        "6-support-exact-phrase-matching-in-find-command": "6. Support exact-phrase matching in find command"
+        "1-provide-more-specific-error-message-for-invalid-delete-index": "1. Provide more specific error message for invalid delete index",
+        "2-improve-remark-display-for-better-readability": "2. Improve remark display for better readability",
+        "3-relaxing-input-validation-for-phone-numbers": "3. Relaxing Input Validation for Phone Numbers",
+        "4-enhanced-tagging-flexibility": "4. Enhanced Tagging Flexibility",
+        "5-support-exact-phrase-matching-in-find-command": "5. Support exact-phrase matching in find command"
       },
       "headingKeywords": {}
     },
