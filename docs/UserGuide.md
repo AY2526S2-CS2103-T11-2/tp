@@ -227,7 +227,7 @@ Examples:
 
 ### Adding or removing a remark from a student : `remark`
 
-Adds a remark to the specified student from CareContacts.
+Adds a remark to the specified student from the address book.
 
 Format: `remark INDEX [r/REMARK] [d/DIETARY REMARK] [b/BEHAVIOR REMARK] [c/CLASS]`
 
