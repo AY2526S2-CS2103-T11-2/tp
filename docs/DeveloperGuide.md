@@ -1,10 +1,8 @@
 ---
 layout: default.md
 title: "Developer Guide"
+pageNav: 3
 ---
-
-* Table of Contents
-  {:toc}
 
 
 # CareContacts Developer Guide
